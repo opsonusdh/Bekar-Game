@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dunohoxajy1s2"]
+
+[ext_resource type="PackedScene" uid="uid://c07f1krctjlj6" path="res://scenes/projectiles.tscn" id="1_gpoy5"]
+[ext_resource type="Texture2D" uid="uid://dvhjf61hs3qqa" path="res://assets/pensil.png" id="2_ja74x"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_864oa"]
+points = PackedVector2Array(-190.5, 9.5, -84.5, -44.5, 185.5, -47.5, 187.5, 43.5, -76.5, 48.5)
+
+[node name="projectiles" unique_id=1005893292 instance=ExtResource("1_gpoy5")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=1688340611]
+rotation = 0.87266463
+texture = ExtResource("2_ja74x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1" unique_id=257752353]
+position = Vector2(-13.5, -10.5)
+shape = SubResource("ConvexPolygonShape2D_864oa")

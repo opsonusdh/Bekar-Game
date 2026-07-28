@@ -1,0 +1,426 @@
+[gd_scene format=3 uid="uid://d263d0et0a5dr"]
+
+[ext_resource type="Script" uid="uid://b4hj15rub8lja" path="res://scripts/on_screen_btns.gd" id="1_l4otc"]
+[ext_resource type="PackedScene" uid="uid://cfjohipcskdvc" path="res://scenes/dpad.tscn" id="2_2y0qc"]
+[ext_resource type="Texture2D" uid="uid://bc4638y5ri6wb" path="res://assets/knowledge scraps.png" id="3_1w5d2"]
+[ext_resource type="FontFile" uid="uid://1qvf4bfa6e1h" path="res://font/Minecraft.ttf" id="4_mkn6k"]
+[ext_resource type="PackedScene" uid="uid://ce1famvbpyhyr" path="res://scenes/text_button.tscn" id="5_2y0qc"]
+[ext_resource type="Texture2D" uid="uid://debhad834nxxf" path="res://assets/placeholder.png" id="6_1w5d2"]
+[ext_resource type="Texture2D" uid="uid://bppfkqcxr3b63" path="res://assets/frame.png" id="7_mkn6k"]
+[ext_resource type="FontFile" uid="uid://dx1fdpl0evyfh" path="res://font/GomePixel-DYJX1.otf" id="8_4tdqh"]
+[ext_resource type="Texture2D" uid="uid://dvhjf61hs3qqa" path="res://assets/pensil.png" id="9_q4e84"]
+[ext_resource type="Texture2D" uid="uid://c5cijgicbadci" path="res://assets/heart.png" id="10_p7k0b"]
+[ext_resource type="Texture2D" uid="uid://d06lcf1h1a74p" path="res://assets/btns.png" id="11_p7k0b"]
+
+[sub_resource type="GDScript" id="GDScript_ig65t"]
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _gui_input(event):
+	if event is InputEventScreenDrag:
+		print(event.position)
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+font = ExtResource("4_mkn6k")
+font_size = 32
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vivr"]
+atlas = ExtResource("11_p7k0b")
+region = Rect2(18, 1, 14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2pp6"]
+atlas = ExtResource("11_p7k0b")
+region = Rect2(18, 17, 14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbdty"]
+atlas = ExtResource("6_1w5d2")
+region = Rect2(225, 69, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vrlf"]
+atlas = ExtResource("6_1w5d2")
+region = Rect2(224, 68, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt702"]
+atlas = ExtResource("7_mkn6k")
+
+[sub_resource type="LabelSettings" id="LabelSettings_8vrlf"]
+font = ExtResource("8_4tdqh")
+font_size = 32
+font_color = Color(0.9, 0.9, 0.9, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v5gy4"]
+font = ExtResource("4_mkn6k")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_d2pp6"]
+font = ExtResource("8_4tdqh")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_u7cuq"]
+font = ExtResource("8_4tdqh")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_o5tgd"]
+font = ExtResource("4_mkn6k")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_0sxyj"]
+font = ExtResource("4_mkn6k")
+font_size = 32
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5gy4"]
+atlas = ExtResource("11_p7k0b")
+region = Rect2(1, 17, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auskg"]
+atlas = ExtResource("11_p7k0b")
+region = Rect2(1, 1, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ql4es"]
+font = ExtResource("8_4tdqh")
+font_size = 128
+font_color = Color(0.23921569, 0, 0, 1)
+shadow_size = 11
+shadow_color = Color(6.988, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7k0b"]
+atlas = ExtResource("7_mkn6k")
+region = Rect2(0, 0, 17, 15.990669)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_313gx"]
+atlas = ExtResource("7_mkn6k")
+region = Rect2(33, 0, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dy707"]
+atlas = ExtResource("7_mkn6k")
+region = Rect2(18, 0, 14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwxed"]
+atlas = ExtResource("7_mkn6k")
+region = Rect2(0, 34, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejg5w"]
+atlas = ExtResource("7_mkn6k")
+region = Rect2(33, 34, 17, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nxo4k"]
+load_path = "res://.godot/imported/frame.png-b49da370ab5b416325f31bcd38e64bfc.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60tj2"]
+atlas = SubResource("CompressedTexture2D_nxo4k")
+region = Rect2(18, 34, 14, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ciyuj"]
+font = ExtResource("8_4tdqh")
+font_size = 32
+font_color = Color(0.23921569, 0, 0, 1)
+shadow_color = Color(6.988, 0, 0, 1)
+
+[node name="on_screen_btns" type="CanvasLayer" unique_id=142624398]
+process_mode = 3
+script = ExtResource("1_l4otc")
+
+[node name="Control" type="Control" parent="." unique_id=299071029]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_ig65t")
+
+[node name="dpad" parent="Control" unique_id=1428397024 instance=ExtResource("2_2y0qc")]
+position = Vector2(165, 462)
+scale = Vector2(3, 3)
+
+[node name="KnowledgeScraps" type="Sprite2D" parent="Control" unique_id=1805765917]
+position = Vector2(34, 21)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("3_1w5d2")
+offset = Vector2(387.5, 275)
+
+[node name="coin label" type="Label" parent="Control" unique_id=198905420]
+texture_filter = 1
+layout_mode = 0
+offset_left = 103.0
+offset_top = 20.0
+offset_right = 143.0
+offset_bottom = 64.0
+text = "0"
+label_settings = SubResource("LabelSettings_1vivr")
+vertical_alignment = 1
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="Control" unique_id=1791252830]
+position = Vector2(1106.0001, 15.000001)
+scale = Vector2(1.642857, 1.6874998)
+texture_normal = SubResource("AtlasTexture_1vivr")
+texture_pressed = SubResource("AtlasTexture_d2pp6")
+
+[node name="treasure" type="TouchScreenButton" parent="Control" unique_id=2984570]
+position = Vector2(1042, 14)
+scale = Vector2(2.5, 2.5)
+texture_normal = SubResource("AtlasTexture_qbdty")
+texture_pressed = SubResource("AtlasTexture_8vrlf")
+
+[node name="treasure2" type="NinePatchRect" parent="Control" unique_id=481205291]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.95900005
+offset_top = 1.0
+offset_right = 1124.0
+offset_bottom = 610.64
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_yt702")
+patch_margin_left = 1
+patch_margin_right = 1
+
+[node name="KnowledgeScraps2" type="Sprite2D" parent="Control/treasure2" unique_id=1931576242]
+position = Vector2(145, 103)
+scale = Vector2(0.08, 0.102)
+texture = ExtResource("3_1w5d2")
+
+[node name="knowledge scrapes Label" type="Label" parent="Control/treasure2" unique_id=1121188500]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 88.0
+offset_right = 470.0
+offset_bottom = 127.0
+text = "Knowledge Scraps: "
+label_settings = SubResource("LabelSettings_8vrlf")
+
+[node name="knowledge scrape value" type="Label" parent="Control/treasure2" unique_id=1577870066]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 94.0
+offset_right = 515.0
+offset_bottom = 126.0
+text = "0"
+label_settings = SubResource("LabelSettings_v5gy4")
+
+[node name="Label4" type="Label" parent="Control/treasure2" unique_id=1318072923]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 192.0
+offset_right = 364.0
+offset_bottom = 225.0
+text = "Enchantments:"
+label_settings = SubResource("LabelSettings_d2pp6")
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Control/treasure2" unique_id=35417368]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 243.0
+offset_right = 1030.0
+offset_bottom = 407.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/treasure2/ScrollContainer2" unique_id=1355462093]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/treasure2/ScrollContainer2/HBoxContainer" unique_id=424615778]
+layout_mode = 2
+text = "Buy potions from the Store"
+label_settings = SubResource("LabelSettings_u7cuq")
+
+[node name="weapon" type="Sprite2D" parent="Control/treasure2" unique_id=1424319267]
+position = Vector2(733, 108)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_q4e84")
+
+[node name="weapon level" type="Label" parent="Control/treasure2" unique_id=431001941]
+layout_mode = 0
+offset_left = 774.0
+offset_top = 93.0
+offset_right = 814.0
+offset_bottom = 116.0
+text = ": 1"
+label_settings = SubResource("LabelSettings_o5tgd")
+
+[node name="Heart" type="Sprite2D" parent="Control/treasure2" unique_id=485406437]
+position = Vector2(887.99994, 107.99999)
+scale = Vector2(1.7749975, 1.6750002)
+texture = ExtResource("10_p7k0b")
+
+[node name="heart count" type="Label" parent="Control/treasure2" unique_id=286676388]
+layout_mode = 0
+offset_left = 933.0
+offset_top = 93.0
+offset_right = 973.0
+offset_bottom = 125.0
+text = ": 3"
+label_settings = SubResource("LabelSettings_0sxyj")
+
+[node name="cross" type="TouchScreenButton" parent="Control/treasure2" unique_id=793854353]
+position = Vector2(1062, 64)
+scale = Vector2(2.25, 2.25)
+texture_normal = SubResource("AtlasTexture_v5gy4")
+texture_pressed = SubResource("AtlasTexture_auskg")
+
+[node name="treasure3" type="NinePatchRect" parent="Control" unique_id=914401850]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.95900005
+offset_top = 1.0
+offset_right = 1124.0
+offset_bottom = 610.64
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_yt702")
+patch_margin_left = 1
+patch_margin_right = 1
+
+[node name="Label" type="Label" parent="Control/treasure3" unique_id=347698300]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 70.0
+offset_right = 979.0
+offset_bottom = 199.0
+text = "Game Paused"
+label_settings = SubResource("LabelSettings_ql4es")
+
+[node name="Text Button" parent="Control/treasure3" unique_id=919474517 instance=ExtResource("5_2y0qc")]
+position = Vector2(203, 396)
+id = 1
+text = "Continue"
+
+[node name="Text Button2" parent="Control/treasure3" unique_id=944676253 instance=ExtResource("5_2y0qc")]
+position = Vector2(625, 395)
+id = 2
+text = "Restart"
+
+[node name="Text Button3" parent="Control/treasure3" unique_id=244374665 instance=ExtResource("5_2y0qc")]
+position = Vector2(974, 395)
+id = 3
+text = "Quit"
+
+[node name="are you sure to restart?" type="Node2D" parent="Control/treasure3" unique_id=1387912123]
+visible = false
+position = Vector2(555.2, 322.75)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/treasure3/are you sure to restart?" unique_id=1291371118]
+texture_filter = 1
+position = Vector2(-192.3729, -29.383755)
+scale = Vector2(11.603192, 12.317833)
+texture = SubResource("AtlasTexture_p7k0b")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control/treasure3/are you sure to restart?" unique_id=1921451392]
+texture_filter = 1
+position = Vector2(227.76, -23.06)
+scale = Vector2(14.47, 12.341)
+texture = SubResource("AtlasTexture_313gx")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Control/treasure3/are you sure to restart?" unique_id=1001118999]
+texture_filter = 1
+position = Vector2(4, -22.875)
+scale = Vector2(14.439, 12.373)
+texture = SubResource("AtlasTexture_dy707")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Control/treasure3/are you sure to restart?" unique_id=748470742]
+texture_filter = 1
+position = Vector2(-192.025, 160.52)
+scale = Vector2(11.647, 12.24)
+texture = SubResource("AtlasTexture_gwxed")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Control/treasure3/are you sure to restart?" unique_id=431337270]
+position = Vector2(227.717, 160.41)
+scale = Vector2(14.473896, 12.263)
+texture = SubResource("AtlasTexture_ejg5w")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Control/treasure3/are you sure to restart?" unique_id=1664995654]
+texture_filter = 1
+position = Vector2(6.33, 160.225)
+scale = Vector2(14.994, 12.286)
+texture = SubResource("AtlasTexture_60tj2")
+
+[node name="Label" type="Label" parent="Control/treasure3/are you sure to restart?" unique_id=2051589018]
+offset_left = -267.0
+offset_top = -94.0
+offset_right = 319.0
+offset_bottom = 55.0
+text = "Are you sure to Restart?
+You will lose your progresses."
+label_settings = SubResource("LabelSettings_ciyuj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text Button4" parent="Control/treasure3/are you sure to restart?" unique_id=331558314 instance=ExtResource("5_2y0qc")]
+position = Vector2(-119.225, 166.425)
+id = 4
+text = "Yeah!"
+
+[node name="Text Button5" parent="Control/treasure3/are you sure to restart?" unique_id=268240059 instance=ExtResource("5_2y0qc")]
+position = Vector2(150, 163)
+id = 5
+text = "No"
+
+[node name="are you sure to quit?" type="Node2D" parent="Control/treasure3" unique_id=2003362770]
+visible = false
+position = Vector2(555.2, 322.75)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/treasure3/are you sure to quit?" unique_id=2106283226]
+texture_filter = 1
+position = Vector2(-192.3729, -29.383755)
+scale = Vector2(11.603192, 12.317833)
+texture = SubResource("AtlasTexture_p7k0b")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control/treasure3/are you sure to quit?" unique_id=1735274815]
+texture_filter = 1
+position = Vector2(227.76, -23.06)
+scale = Vector2(14.47, 12.341)
+texture = SubResource("AtlasTexture_313gx")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Control/treasure3/are you sure to quit?" unique_id=567552117]
+texture_filter = 1
+position = Vector2(4, -22.875)
+scale = Vector2(14.439, 12.373)
+texture = SubResource("AtlasTexture_dy707")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Control/treasure3/are you sure to quit?" unique_id=165499282]
+texture_filter = 1
+position = Vector2(-192.025, 160.52)
+scale = Vector2(11.647, 12.24)
+texture = SubResource("AtlasTexture_gwxed")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Control/treasure3/are you sure to quit?" unique_id=1560030267]
+position = Vector2(227.717, 160.41)
+scale = Vector2(14.473896, 12.263)
+texture = SubResource("AtlasTexture_ejg5w")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Control/treasure3/are you sure to quit?" unique_id=533164310]
+texture_filter = 1
+position = Vector2(6.33, 160.225)
+scale = Vector2(14.994, 12.286)
+texture = SubResource("AtlasTexture_60tj2")
+
+[node name="Label" type="Label" parent="Control/treasure3/are you sure to quit?" unique_id=2081664753]
+offset_left = -267.0
+offset_top = -94.0
+offset_right = 319.0
+offset_bottom = 55.0
+text = "Are you sure to Quit?
+You will lose your progresses."
+label_settings = SubResource("LabelSettings_ciyuj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text Button4" parent="Control/treasure3/are you sure to quit?" unique_id=766773606 instance=ExtResource("5_2y0qc")]
+position = Vector2(-119.20001, 166.25)
+id = 6
+text = "Yeah!"
+
+[node name="Text Button5" parent="Control/treasure3/are you sure to quit?" unique_id=2053267705 instance=ExtResource("5_2y0qc")]
+position = Vector2(150, 163)
+id = 7
+text = "No"
+
+[connection signal="button_pressed" from="." to="." method="_on_button_pressed"]
+[connection signal="released" from="Control/TouchScreenButton2" to="." method="_on_touch_screen_button_2_released"]
+[connection signal="released" from="Control/treasure" to="." method="_on_treasure_released"]
+[connection signal="released" from="Control/treasure2/cross" to="." method="_on_cross_released"]

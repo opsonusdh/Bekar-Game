@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://cf0ipeow3f8gm"]
+
+[ext_resource type="Texture2D" uid="uid://cj4iuf1j5o6of" path="res://assets/black bg.png" id="1_dhqfv"]
+[ext_resource type="Script" uid="uid://ckum7h2g5shhl" path="res://scripts/loading.gd" id="1_yt702"]
+[ext_resource type="FontFile" uid="uid://dx1fdpl0evyfh" path="res://font/GomePixel-DYJX1.otf" id="2_101rs"]
+[ext_resource type="PackedScene" uid="uid://ce1famvbpyhyr" path="res://scenes/text_button.tscn" id="3_yt702"]
+[ext_resource type="Texture2D" uid="uid://bppfkqcxr3b63" path="res://assets/frame.png" id="5_2ytni"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ytni"]
+font = ExtResource("2_101rs")
+font_size = 128
+font_color = Color(0.23921569, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(6.988, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vrlf"]
+atlas = ExtResource("5_2ytni")
+region = Rect2(0, 0, 17, 15.990669)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5gy4"]
+atlas = ExtResource("5_2ytni")
+region = Rect2(33, 0, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbdty"]
+atlas = ExtResource("5_2ytni")
+region = Rect2(18, 0, 14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auskg"]
+atlas = ExtResource("5_2ytni")
+region = Rect2(0, 34, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2pp6"]
+atlas = ExtResource("5_2ytni")
+region = Rect2(33, 34, 17, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yt702"]
+load_path = "res://.godot/imported/frame.png-b49da370ab5b416325f31bcd38e64bfc.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7cuq"]
+atlas = SubResource("CompressedTexture2D_yt702")
+region = Rect2(18, 34, 14, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+font = ExtResource("2_101rs")
+font_size = 32
+font_color = Color(0.23921569, 0, 0, 1)
+shadow_color = Color(6.988, 0, 0, 1)
+
+[node name="loading" type="Node2D" unique_id=351937891]
+texture_filter = 1
+script = ExtResource("1_yt702")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=83989375]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=200208363]
+texture = ExtResource("1_dhqfv")
+
+[node name="Label" type="Label" parent="." unique_id=1032119724]
+z_index = 1
+offset_left = -585.0
+offset_top = -320.0
+offset_right = 585.0
+offset_bottom = -39.0
+text = "GPSS GB"
+label_settings = SubResource("LabelSettings_2ytni")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text Button" parent="." unique_id=32277719 instance=ExtResource("3_yt702")]
+position = Vector2(-400, 0)
+text = "Play"
+
+[node name="Text Button2" parent="." unique_id=1769016016 instance=ExtResource("3_yt702")]
+position = Vector2(-400, 100)
+id = 1
+text = "Restart"
+
+[node name="Text Button3" parent="." unique_id=245519430 instance=ExtResource("3_yt702")]
+position = Vector2(-400, 200)
+id = 2
+text = "Exit"
+
+[node name="are you sure to restart?" type="Node2D" parent="." unique_id=892026189]
+
+[node name="Sprite2D" type="Sprite2D" parent="are you sure to restart?" unique_id=817758658]
+texture_filter = 1
+position = Vector2(-192.3729, -29.383755)
+scale = Vector2(11.603192, 12.317833)
+texture = SubResource("AtlasTexture_8vrlf")
+
+[node name="Sprite2D2" type="Sprite2D" parent="are you sure to restart?" unique_id=1482427386]
+texture_filter = 1
+position = Vector2(227.76, -23.06)
+scale = Vector2(14.47, 12.341)
+texture = SubResource("AtlasTexture_v5gy4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="are you sure to restart?" unique_id=1040822461]
+texture_filter = 1
+position = Vector2(4, -22.875)
+scale = Vector2(14.439, 12.373)
+texture = SubResource("AtlasTexture_qbdty")
+
+[node name="Sprite2D4" type="Sprite2D" parent="are you sure to restart?" unique_id=1067283651]
+texture_filter = 1
+position = Vector2(-192.025, 160.52)
+scale = Vector2(11.647, 12.24)
+texture = SubResource("AtlasTexture_auskg")
+
+[node name="Sprite2D5" type="Sprite2D" parent="are you sure to restart?" unique_id=1468712467]
+position = Vector2(227.717, 160.41)
+scale = Vector2(14.473896, 12.263)
+texture = SubResource("AtlasTexture_d2pp6")
+
+[node name="Sprite2D6" type="Sprite2D" parent="are you sure to restart?" unique_id=1643058577]
+texture_filter = 1
+position = Vector2(6.33, 160.225)
+scale = Vector2(14.994, 12.286)
+texture = SubResource("AtlasTexture_u7cuq")
+
+[node name="Label" type="Label" parent="are you sure to restart?" unique_id=3145901]
+offset_left = -267.0
+offset_top = -94.0
+offset_right = 319.0
+offset_bottom = 55.0
+text = "Are you sure to Restart?
+You will lose your progresses."
+label_settings = SubResource("LabelSettings_1vivr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text Button4" parent="are you sure to restart?" unique_id=638945666 instance=ExtResource("3_yt702")]
+position = Vector2(-120, 167)
+id = 3
+text = "Yeah!"
+
+[node name="Text Button5" parent="are you sure to restart?" unique_id=1373311700 instance=ExtResource("3_yt702")]
+position = Vector2(150, 163)
+id = 4
+text = "No"

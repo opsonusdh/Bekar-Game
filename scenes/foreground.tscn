@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://clwbo46x660qg"]
+
+[node name="foreground" type="Sprite2D" unique_id=711558214]
+z_index = 2

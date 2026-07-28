@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ce1famvbpyhyr"]
+
+[ext_resource type="Script" uid="uid://bhf0wskkpi2x3" path="res://scripts/text_button.gd" id="1_bn4cq"]
+[ext_resource type="FontFile" uid="uid://dx1fdpl0evyfh" path="res://font/GomePixel-DYJX1.otf" id="2_rs181"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+font = ExtResource("2_rs181")
+font_size = 64
+font_color = Color(0.23921569, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(6.988, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5gy4"]
+size = Vector2(66.12, 20)
+
+[node name="Text Button" type="Node2D" unique_id=32277719]
+script = ExtResource("1_bn4cq")
+button_label_colour = Color(0.23921569, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1082697804]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -118.0
+offset_top = -32.5
+offset_right = 107.0
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_1vivr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="." unique_id=977825775]
+shape = SubResource("RectangleShape2D_v5gy4")

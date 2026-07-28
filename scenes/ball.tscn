@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://csvs40yar504e"]
+
+[ext_resource type="Script" uid="uid://btdoh1up6v83f" path="res://scripts/projectiles.gd" id="1_cxlvu"]
+[ext_resource type="Texture2D" uid="uid://cyuwt2l34ufyi" path="res://assets/Sprite-0001.png" id="2_f7cbr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbdty"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5gy4"]
+atlas = ExtResource("2_f7cbr")
+
+[node name="ball" type="Area2D" unique_id=1005893292]
+position = Vector2(1296, -104)
+collision_layer = 3
+collision_mask = 3
+priority = 15
+script = ExtResource("1_cxlvu")
+damage = 999
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1660036803]
+position = Vector2(3.630005, 12.845001)
+scale = Vector2(1.46, 1.46)
+shape = SubResource("CircleShape2D_qbdty")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1661711576]
+position = Vector2(4, 12.845001)
+scale = Vector2(0.49999997, 0.49999997)
+texture = SubResource("AtlasTexture_v5gy4")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

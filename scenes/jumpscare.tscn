@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dfu8wo44ctd43"]
+
+[ext_resource type="Script" uid="uid://g14pb714ykto" path="res://scripts/jumpscare.gd" id="1_yfyrm"]
+[ext_resource type="Texture2D" uid="uid://cj4iuf1j5o6of" path="res://assets/black bg.png" id="2_25u87"]
+[ext_resource type="FontFile" uid="uid://dx1fdpl0evyfh" path="res://font/GomePixel-DYJX1.otf" id="2_uhh4h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfyrm"]
+atlas = ExtResource("2_25u87")
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+font = ExtResource("2_uhh4h")
+font_size = 128
+font_color = Color(0.24, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(6.987799, 0, 0, 1)
+shadow_offset = Vector2(5, 5)
+
+[node name="jumpscare" type="Node2D" unique_id=727332870]
+script = ExtResource("1_yfyrm")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1414993864]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1348683137]
+position = Vector2(0, 0.005)
+scale = Vector2(18.390623, -20.121914)
+texture = SubResource("AtlasTexture_yfyrm")
+
+[node name="Label" type="Label" parent="." unique_id=210347060]
+offset_left = -582.0
+offset_top = -137.0
+offset_right = 588.0
+offset_bottom = 144.0
+text = "GPSS GangBang"
+label_settings = SubResource("LabelSettings_1vivr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=3265689]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=531500334]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

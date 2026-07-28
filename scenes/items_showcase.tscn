@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b2aj7vwnu43gm"]
+
+[ext_resource type="Script" uid="uid://bdabccsm6ives" path="res://scripts/items_showcase.gd" id="1_ttwca"]
+[ext_resource type="FontFile" uid="uid://dx1fdpl0evyfh" path="res://font/GomePixel-DYJX1.otf" id="3_rqvrc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qbdty"]
+font = ExtResource("3_rqvrc")
+font_size = 64
+
+[node name="items_showcase" type="Control" unique_id=1443122304]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ttwca")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1197077010]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=145422543]
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1056518389]
+layout_mode = 2
+text = "Item Name"
+label_settings = SubResource("LabelSettings_qbdty")
+horizontal_alignment = 1
+vertical_alignment = 1

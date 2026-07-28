@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://dd3tm16kvdgmh"]
+
+[ext_resource type="Script" uid="uid://p516yn85nyd" path="res://scripts/banner.gd" id="1_ahpvl"]
+[ext_resource type="Texture2D" uid="uid://bcwxux8br8303" path="res://assets/Main_menu.png" id="1_w8kwa"]
+[ext_resource type="FontFile" uid="uid://dx1fdpl0evyfh" path="res://font/GomePixel-DYJX1.otf" id="2_1gq0u"]
+[ext_resource type="PackedScene" uid="uid://ce1famvbpyhyr" path="res://scenes/text_button.tscn" id="4_yl27h"]
+
+[sub_resource type="Animation" id="Animation_yl27h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ahpvl"]
+resource_name = "fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yl27h"]
+_data = {
+&"RESET": SubResource("Animation_yl27h"),
+&"fadein": SubResource("Animation_ahpvl")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+font = ExtResource("2_1gq0u")
+font_color = Color(0, 0, 0, 1)
+
+[node name="banner" type="Node2D" unique_id=764233393]
+modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_ahpvl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=195338009]
+deterministic = true
+root_motion_local = true
+libraries/ = SubResource("AnimationLibrary_yl27h")
+autoplay = &"fadein"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1882754370]
+texture_filter = 1
+offset_left = 90.0
+offset_top = 1.0
+offset_right = 130.0
+offset_bottom = 41.0
+texture = ExtResource("1_w8kwa")
+region_rect = Rect2(16, 4, 80, 168)
+patch_margin_left = 5
+patch_margin_top = 7
+patch_margin_right = 6
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="." unique_id=2001675431]
+texture_filter = 1
+offset_left = -80.0
+offset_right = 34.0
+offset_bottom = 17.0
+text = "hello"
+label_settings = SubResource("LabelSettings_1vivr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text Button" parent="." unique_id=32277719 instance=ExtResource("4_yl27h")]
