@@ -4,11 +4,16 @@
 [ ] all player animations provided are not smooth. so all of them should be transformed into skeleton 2D.
 
 [ ] scene 1.2 
+
 [ ] scene 2.1: jayanta 
+
 [ ] kochu sounds and voices
+
 [ ] player movement sound effects
+
 [ ] ground first and second floor 
 so on. 
+
 
 ### dear maintainer 
 - whenever you complete one of the tasks, please put a cross (x) in the square brackets to indicate that they are completed. 
