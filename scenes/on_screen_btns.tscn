@@ -132,8 +132,8 @@ offset_bottom = 40.0
 script = SubResource("GDScript_ig65t")
 
 [node name="dpad" parent="Control" unique_id=1428397024 instance=ExtResource("2_2y0qc")]
-position = Vector2(165, 462)
-scale = Vector2(3, 3)
+position = Vector2(166, 422.00003)
+scale = Vector2(3.2, 3.2)
 
 [node name="KnowledgeScraps" type="Sprite2D" parent="Control" unique_id=1805765917]
 position = Vector2(34, 21)

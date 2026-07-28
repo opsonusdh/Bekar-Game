@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dxtwu6st48gt5" path="res://assets/class id.png" id="8_p837x"]
 [ext_resource type="FontFile" uid="uid://1qvf4bfa6e1h" path="res://font/Minecraft.ttf" id="9_r02jg"]
 [ext_resource type="Texture2D" uid="uid://ypeasscjlq3r" path="res://assets/go btn.png" id="10_ig65t"]
+[ext_resource type="PackedScene" uid="uid://dc8ic7gghy1sm" path="res://scenes/interractable_area.tscn" id="11_jdgsh"]
+[ext_resource type="Texture2D" uid="uid://di24bpt00nypp" path="res://assets/coridoor door.png" id="12_6r6dc"]
 [ext_resource type="PackedScene" uid="uid://r62yum3hyjqf" path="res://scenes/curtain.tscn" id="13_ybqas"]
 [ext_resource type="PackedScene" uid="uid://d263d0et0a5dr" path="res://scenes/on_screen_btns.tscn" id="14_rbtea"]
 
@@ -39,6 +41,9 @@ font_size = 12
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(230, 384)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(228, 384)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lv108"]
 load_path = "res://.godot/imported/go btn.png-15ea74450bdf4284a5d35757a333d9fb.ctex"
 
@@ -50,6 +55,7 @@ region = Rect2(1, 1, 15, 15)
 script = ExtResource("1_d7a6c")
 
 [node name="CharacterBody1D" parent="." unique_id=1361898952 instance=ExtResource("1_lki8s")]
+z_index = 2
 scale = Vector2(4, 4)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody1D" unique_id=1381219682]
@@ -157,12 +163,19 @@ position = Vector2(-256, -17)
 position = Vector2(-1, -10)
 shape = SubResource("RectangleShape2D_1vivr")
 
-[node name="Area2D2" type="Area2D" parent="areas" unique_id=615841425]
-position = Vector2(1347, -13)
+[node name="Interractable_Area2D" parent="areas" unique_id=1104267306 node_paths=PackedStringArray("sprite_2d", "collision_shape_2d") instance=ExtResource("11_jdgsh")]
+z_index = 1
+position = Vector2(1352, -9)
+sprite_2d = NodePath("Sprite2D")
+collision_shape_2d = NodePath("CollisionShape2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/Area2D2" unique_id=380102061]
-position = Vector2(-2, -15)
-shape = SubResource("RectangleShape2D_1vivr")
+[node name="Sprite2D" type="Sprite2D" parent="areas/Interractable_Area2D" unique_id=265351686]
+position = Vector2(-3.56, -20.38)
+texture = ExtResource("12_6r6dc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/Interractable_Area2D" unique_id=595529591]
+position = Vector2(-4, -19)
+shape = SubResource("RectangleShape2D_8vrlf")
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="." unique_id=499052339]
 visible = false
@@ -182,4 +195,6 @@ scale = Vector2(7.535, 7.535)
 
 [connection signal="body_entered" from="areas/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="areas/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="areas/Interractable_Area2D" to="." method="_on_interractable_area_2d_body_entered"]
+[connection signal="body_exited" from="areas/Interractable_Area2D" to="." method="_on_interractable_area_2d_body_exited"]
 [connection signal="button_pressed" from="on_screen_btns" to="." method="_on_on_screen_btns_button_pressed"]

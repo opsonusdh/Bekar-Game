@@ -1,3 +1,16 @@
+## An interactable Area2D that can display a simple outline highlight.
+##
+## This script duplicates the assigned Sprite2D to create an outline sprite.
+## The outline is slightly larger than the original sprite and is hidden by
+## default. Call [method highlight] to show or hide it.
+##
+## Example:
+## ```gdscript
+## if player_near:
+##     chest.highlight(true)
+## else:
+##     chest.highlight(false)
+## ```
 extends Area2D
 
 @export var sprite_2d: Sprite2D
@@ -21,6 +34,19 @@ func _ready() -> void:
 	add_child(outline)
 	move_child(outline, 0)
 
+## Enables or disables the outline.
+##
+## Parameters:
+## - `enable`: If `true`, the outline becomes visible. If `false`, it is hidden.
+##
+## Example:
+## ```gdscript
+## door.highlight(true)
+##
+## await get_tree().create_timer(0.5).timeout
+##
+## door.highlight(false)
+## ```
 func highlight(enable: bool) -> void:
 	if outline:
 		outline.visible = enable

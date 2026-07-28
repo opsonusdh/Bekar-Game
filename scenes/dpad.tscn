@@ -134,28 +134,28 @@ action = "pos_lock"
 
 [node name="jump" type="TouchScreenButton" parent="." unique_id=1911445585]
 texture_filter = 1
-position = Vector2(285, -5)
+position = Vector2(275, -5)
 scale = Vector2(1.5, 1.5)
 texture_normal = SubResource("AtlasTexture_d2pp6")
 texture_pressed = SubResource("AtlasTexture_u7cuq")
 action = "jump"
 
 [node name="crouch" type="TouchScreenButton" parent="." unique_id=551410775]
-position = Vector2(286, 27)
+position = Vector2(275, 27)
 scale = Vector2(1.5, 1.5)
 texture_normal = SubResource("AtlasTexture_o5tgd")
 texture_pressed = SubResource("AtlasTexture_0sxyj")
 action = "crouch"
 
 [node name="fire" type="TouchScreenButton" parent="." unique_id=686728454]
-position = Vector2(251, 13)
+position = Vector2(240, 13)
 scale = Vector2(1.5, 1.5)
 texture_normal = SubResource("AtlasTexture_ql4es")
 texture_pressed = SubResource("AtlasTexture_s5u3a")
 action = "shoot"
 
 [node name="interract" type="TouchScreenButton" parent="." unique_id=944826219]
-position = Vector2(250.00002, -18)
+position = Vector2(240, -18)
 scale = Vector2(1.5, 1.5)
 texture_normal = SubResource("AtlasTexture_rw4ux")
 texture_pressed = SubResource("AtlasTexture_u8wmi")

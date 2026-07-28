@@ -7,6 +7,7 @@ var player_in_door2 = false
 @onready var touch_screen_button: TouchScreenButton = $TouchScreenButton
 @onready var curtain: Area2D = $curtain
 @onready var on_screen_btns: CanvasLayer = $on_screen_btns
+@onready var interractable_area_2d: Area2D = $areas/Interractable_Area2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -65,3 +66,12 @@ func _on_on_screen_btns_button_pressed(button_type: String) -> void:
 	elif button_type == "quit":
 		get_tree().change_scene_to_file("res://scenes/loading.tscn")
 		get_tree().paused = false
+
+
+func _on_interractable_area_2d_body_entered(body: Node2D) -> void:
+	if body == player:
+		interractable_area_2d.highlight(true)
+
+func _on_interractable_area_2d_body_exited(body: Node2D) -> void:
+	if body == player:
+		interractable_area_2d.highlight(true)
