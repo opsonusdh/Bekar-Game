@@ -1,5 +1,7 @@
 extends Node
 
+const DEBUG = true
+
 var path = "user://savegame.json"
 signal Player_coin_changed(new_amount)
 
@@ -20,4 +22,5 @@ func load_data(path=path):
 		print(json.data)
 		return json.data
 	else:
+		push_error("Error while Loading data: ", error)
 		return {}

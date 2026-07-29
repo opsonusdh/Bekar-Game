@@ -14,6 +14,7 @@ var checkpoint = Vector2(0, -32)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player.edit_attrs("jump_velocity_factor", 0.6667)
+	player.edit_attrs("shoot_factor", 1)
 	make_all_buttons_opacity(0.5)
 	
 
@@ -97,7 +98,7 @@ func _process(delta: float) -> void:
 					"scene_path": "res://scenes/pensil.tscn", 
 					"shootout_cooldown": 0.2, 
 					"disappear_time": 0.5, 
-					"shooting_speed": 100, 
+					"shooting_speed": 1000, 
 					"scale": 0.03
 				}
 			)
@@ -112,7 +113,7 @@ func _process(delta: float) -> void:
 			if player_health > _levels_completed[current_scene]["score"]:
 				var old_score = _levels_completed[current_scene]["score"]
 				_levels_completed[current_scene]["score"] = player_health
-				_player["knowledge_scraps"] = _player.get("knowledge_scraps", 0) + player_health - old_score
+				_player["knowledge_scraps"] = int(_player.get("knowledge_scraps", 0) + player_health - old_score)
 			
 			data["levels_completed"] = _levels_completed
 			data["player"] = _player

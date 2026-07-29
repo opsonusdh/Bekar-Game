@@ -18,6 +18,7 @@ var jump_velocity = _player.get("jump_velocity", -600)
 
 var speed_factor = 1
 var jump_velocity_factor = 1
+var shoot_factor = 1
 
 var weapon = _player.get(
 	"active_weapon",
@@ -32,10 +33,12 @@ var weapon = _player.get(
 		"scale": 0.03
 	}
 )
+
 var PROJECTILES = load(weapon["scene_path"])
 var attr_dict = {
 	"jump_velocity_factor": jump_velocity_factor,
 	"speed_factor": speed_factor,
+	"shoot_factor": shoot_factor
 }
 
 var was_falling = false
@@ -47,6 +50,7 @@ var is_shooting = false
 var current_dir := 1.0
 var cooldown := 0.0
 var position_lock := false
+var pos_factor = 1
 #var is_dashing = false
 
 func take_damage(amount):
@@ -82,6 +86,8 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
+	var direction := Input.get_axis("go left", "go right")
+	
 	cooldown -= delta
 	if is_shooting and cooldown <= 0:
 		var shoot_dir := Vector2(current_dir, 0)
@@ -102,9 +108,14 @@ func _physics_process(delta: float) -> void:
 				shoot_dir.x = current_dir
 
 			shoot_dir = shoot_dir.normalized()
-		
-		shoot(shoot_dir * (speed_factor*speed + weapon["shooting_speed"]*delta))
+		#if position_lock:
+			#pos_factor = 0
+		#else:
+			#pos_factor = 1
+		# speed_factor*speed*abs(direction)*pos_factor + 
+		shoot(shoot_dir * (shoot_factor * weapon["shooting_speed"]))
 		cooldown = weapon["shootout_cooldown"]
+		print(direction)
 	
 	if is_on_floor() and is_jumping:
 		is_jumping = false
@@ -142,7 +153,6 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("go left", "go right")
 	if direction:
 		current_dir = direction
 	if direction and not is_crowching:

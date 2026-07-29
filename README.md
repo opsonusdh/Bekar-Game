@@ -18,3 +18,9 @@ so on.
 ### dear maintainer 
 - whenever you complete one of the tasks, please put a cross (x) in the square brackets to indicate that they are completed. 
 - whenever you wish you can add more task in the to do list.
+
+### Change logs
+
+| Date | Work done |
+| --- | --- |
+| 29th July 2026 | Created debug mode and accessories. |

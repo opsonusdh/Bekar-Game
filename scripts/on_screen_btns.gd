@@ -44,7 +44,7 @@ signal button_pressed(button_type: String)
 func _ready():
 	Global.Player_coin_changed.connect(_on_coin_changed)
 	
-	var coin = Global.load_data().get("player", {}).get("knowledge_scraps", 0)
+	var coin = int(Global.load_data().get("player", {}).get("knowledge_scraps", 0))
 	_on_coin_changed(coin)
 	var btns = [
 		$"Control/treasure3/Text Button", \
@@ -83,7 +83,7 @@ func _ready():
 	dpad._ready()
 
 func _on_coin_changed(amount):
-	coin_label.text = str(amount)
+	coin_label.text = str(int(amount))
 	var label_settings = coin_label.label_settings
 	if amount == 0:
 		label_settings.set_font_color(Color(1, 0, 0, 1))
@@ -98,7 +98,7 @@ func show_box(box):
 		var data = Global.load_data()
 		var _player = data.get("player", {})
 		var hearts = _player.get("max_hearts", 3)
-		var _knowledge_scrape = _player.get("knowledge_scrape", 0)
+		var _knowledge_scrape = int(_player.get("knowledge_scrape", 0))
 		var weapon = _player.get("active_weapon", {"name": "pensil", "damage": 1, "icon_path": "res://assets/pensil.png", "scene_path": "res://scenes/pensil.tscn"})
 		var enchantments = _player.get("enchantments_purchased", [])
 		#if enchantments == null:

@@ -81,7 +81,13 @@ position = Vector2(-400, 200)
 id = 2
 text = "Exit"
 
+[node name="Text Button4" parent="." unique_id=1929604998 instance=ExtResource("3_yt702")]
+position = Vector2(-3, 90)
+id = 3
+text = "DEBUG"
+
 [node name="are you sure to restart?" type="Node2D" parent="." unique_id=892026189]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="are you sure to restart?" unique_id=817758658]
 texture_filter = 1
@@ -131,10 +137,123 @@ vertical_alignment = 1
 
 [node name="Text Button4" parent="are you sure to restart?" unique_id=638945666 instance=ExtResource("3_yt702")]
 position = Vector2(-120, 167)
-id = 3
+id = 4
 text = "Yeah!"
 
 [node name="Text Button5" parent="are you sure to restart?" unique_id=1373311700 instance=ExtResource("3_yt702")]
 position = Vector2(150, 163)
-id = 4
+id = 5
 text = "No"
+
+[node name="Debug" type="Node2D" parent="." unique_id=571039449]
+position = Vector2(1939, -5)
+
+[node name="BlackBg" type="Sprite2D" parent="Debug" unique_id=1941110479]
+texture = ExtResource("1_dhqfv")
+offset = Vector2(2, -4)
+
+[node name="Label" type="Label" parent="Debug" unique_id=1918852693]
+z_index = 1
+offset_left = -585.0
+offset_top = -320.0
+offset_right = 585.0
+offset_bottom = -39.0
+text = "DEBUG"
+label_settings = SubResource("LabelSettings_2ytni")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text Button6" parent="Debug" unique_id=2025002882 instance=ExtResource("3_yt702")]
+position = Vector2(295, 70)
+id = 7
+text = "Edit Game Data"
+
+[node name="Text Button7" parent="Debug" unique_id=276578058 instance=ExtResource("3_yt702")]
+position = Vector2(-304, 72)
+id = 6
+text = "Jump to scene"
+
+[node name="Text Button8" parent="Debug" unique_id=2095424235 instance=ExtResource("3_yt702")]
+position = Vector2(27, 193)
+id = 8
+text = "Back"
+
+[node name="Jump to Scene" type="Node2D" parent="Debug" unique_id=127086887]
+
+[node name="BlackBg" type="Sprite2D" parent="Debug/Jump to Scene" unique_id=842259932]
+position = Vector2(-1933, 998)
+scale = Vector2(1.2148637, 1.3298278)
+texture = ExtResource("1_dhqfv")
+offset = Vector2(2, -4)
+
+[node name="Label" type="Label" parent="Debug/Jump to Scene" unique_id=1986888173]
+z_index = 1
+offset_left = -2521.0
+offset_top = 620.0
+offset_right = -1351.0
+offset_bottom = 901.0
+text = "Jump to Scene"
+label_settings = SubResource("LabelSettings_2ytni")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text Button9" parent="Debug/Jump to Scene" unique_id=959914204 instance=ExtResource("3_yt702")]
+position = Vector2(-2487, 690)
+id = 9
+text = "<-"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Debug/Jump to Scene" unique_id=1765718738]
+offset_left = -2489.0
+offset_top = 918.0
+offset_right = -1376.0
+offset_bottom = 1315.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Debug/Jump to Scene/ScrollContainer" unique_id=1236182915]
+layout_mode = 2
+
+[node name="Edit Game File" type="Node2D" parent="Debug" unique_id=1201404234]
+
+[node name="BlackBg" type="Sprite2D" parent="Debug/Edit Game File" unique_id=69082940]
+position = Vector2(-130.99988, 1009.00006)
+scale = Vector2(1.5266247, 1.5815461)
+texture = ExtResource("1_dhqfv")
+offset = Vector2(2, -4)
+
+[node name="TextEdit" type="TextEdit" parent="Debug/Edit Game File" unique_id=1910927818]
+offset_left = -649.0
+offset_top = 806.0
+offset_right = 384.0
+offset_bottom = 1217.0
+
+[node name="Label" type="Label" parent="Debug/Edit Game File" unique_id=1760188647]
+z_index = 1
+offset_left = -627.0
+offset_top = 621.00006
+offset_right = 543.0
+offset_bottom = 902.00006
+scale = Vector2(0.8413983, 0.7694536)
+text = "Edit Game File"
+label_settings = SubResource("LabelSettings_2ytni")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text Button10" parent="Debug/Edit Game File" unique_id=1260464948 instance=ExtResource("3_yt702")]
+position = Vector2(-620, 704)
+id = 10
+text = "<-"
+
+[node name="Text Button11" parent="Debug/Edit Game File" unique_id=797324651 instance=ExtResource("3_yt702")]
+position = Vector2(-472, 1263)
+id = 11
+text = "Save"
+
+[node name="Text Button12" parent="Debug/Edit Game File" unique_id=1434309480 instance=ExtResource("3_yt702")]
+position = Vector2(159, 1264)
+id = 12
+text = "Reload"
+
+[node name="Report" type="Label" parent="Debug/Edit Game File" unique_id=969788222]
+offset_left = -648.0
+offset_top = 778.0
+offset_right = 385.0
+offset_bottom = 806.0

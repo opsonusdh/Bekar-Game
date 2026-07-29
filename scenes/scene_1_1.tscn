@@ -68,7 +68,7 @@ scale = Vector2(1.495, 1.495)
 [node name="banner" parent="kochu" unique_id=764233393 instance=ExtResource("4_5xjot")]
 visible = false
 texture_filter = 1
-position = Vector2(368.56186, -93.645485)
+position = Vector2(238.12708, -86.95652)
 scale = Vector2(1.3377926, 1.3377926)
 text = "hello"
 with_button = true
