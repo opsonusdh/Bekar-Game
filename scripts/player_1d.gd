@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var shooting_point: Node2D = $"shooting point"
 @onready var hurtbox: CollisionShape2D = $hurtbox/CollisionShape2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 signal player_died
