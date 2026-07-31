@@ -216,7 +216,7 @@ layout_mode = 0
 offset_left = 194.0
 offset_top = 243.0
 offset_right = 1030.0
-offset_bottom = 407.0
+offset_bottom = 472.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/treasure2/ScrollContainer2" unique_id=1355462093]
 layout_mode = 2
@@ -420,7 +420,6 @@ position = Vector2(150, 163)
 id = 7
 text = "No"
 
-[connection signal="button_pressed" from="." to="." method="_on_button_pressed"]
 [connection signal="released" from="Control/TouchScreenButton2" to="." method="_on_touch_screen_button_2_released"]
 [connection signal="released" from="Control/treasure" to="." method="_on_treasure_released"]
 [connection signal="released" from="Control/treasure2/cross" to="." method="_on_cross_released"]

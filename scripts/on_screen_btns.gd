@@ -10,7 +10,7 @@ extends CanvasLayer
 @onready var weapon_sprite: Sprite2D = $Control/treasure2/weapon
 @onready var weapon_level: Label = $"Control/treasure2/weapon level"
 @onready var heart_count: Label = $"Control/treasure2/heart count"
-@onready var touch_screen_button: TouchScreenButton = $Control/treasure2/TouchScreenButton
+@onready var touch_screen_button: TouchScreenButton = $Control/treasure2/cross
 @onready var enchantments_box: HBoxContainer = $Control/treasure2/ScrollContainer2/HBoxContainer
 @onready var are_you_sure_to_quit: Node2D = $"Control/treasure3/are you sure to quit?"
 @onready var are_you_sure_to_restart: Node2D = $"Control/treasure3/are you sure to restart?"
@@ -101,13 +101,19 @@ func show_box(box):
 		var _knowledge_scrape = int(_player.get("knowledge_scrape", 0))
 		var weapon = _player.get("active_weapon", {"name": "pensil", "damage": 1, "icon_path": "res://assets/pensil.png", "scene_path": "res://scenes/pensil.tscn"})
 		var enchantments = _player.get("enchantments_purchased", [])
-		#if enchantments == null:
-			#enchantments = []
-			#for i in range(10):
-				#enchantments.append({"name": "Item Name", "sprite_path": "res://assets/knowledge scraps.png"})
+		if enchantments == null or enchantments == []:
+			enchantments = []
+			for i in range(10):
+				enchantments.append({"name": "Item Name", "sprite_path": "res://assets/knowledge scraps.png"})
 		
 		
 		heart_count.text = str(hearts)
+		var tex: Texture2D = load(weapon["icon_path"])
+		if tex:
+			weapon_sprite.texture = tex
+			weapon_sprite.scale = Vector2(72, 72) / tex.get_size()
+		else:
+			push_warning("Could not load weapon icon: %s" % weapon["icon_path"])
 		weapon_sprite.texture = ImageTexture.create_from_image(Image.load_from_file(weapon["icon_path"]))
 		weapon_sprite.scale = Vector2(72, 72)/weapon_sprite.texture.get_size()
 		weapon_level.text = str(weapon["damage"])

@@ -51,10 +51,11 @@ func _process(delta):
 
 func _on_on_screen_btns_button_pressed(button_type: String) -> void:
 	if button_type in ["treasure", "pause"]:
+		await on_screen_btns.show_box(button_type)
 		get_tree().paused = true
-		on_screen_btns.show_box(button_type)
 	elif button_type == "treasure_close":
 		on_screen_btns.hide_box("treasure")
+		get_tree().paused = false
 	elif button_type == "continue":
 		get_tree().paused = false
 		on_screen_btns.hide_box("pause")
@@ -64,8 +65,8 @@ func _on_on_screen_btns_button_pressed(button_type: String) -> void:
 		on_screen_btns.hide_box("restart")
 		on_screen_btns.hide_box("pause")
 	elif button_type == "quit":
-		get_tree().change_scene_to_file("res://scenes/loading.tscn")
 		get_tree().paused = false
+		get_tree().change_scene_to_file("res://scenes/loading.tscn")
 
 
 func _on_interractable_area_2d_body_entered(body: Node2D) -> void:
