@@ -109,6 +109,7 @@ position = Vector2(2765, 19)
 shape = SubResource("WorldBoundaryShape2D_8vrlf")
 
 [node name="StaticBody2D" parent="borders" unique_id=715357717 instance=ExtResource("6_t6bmd")]
+visible = false
 position = Vector2(-9, 244)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="borders/StaticBody2D" unique_id=472691672]

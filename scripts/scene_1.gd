@@ -46,7 +46,7 @@ func _process(delta):
 			await curtain.play_animation(curtain.FADEIN)
 			get_tree().change_scene_to_file("res://scenes/scene_1_1.tscn")
 		elif player_in_door2:
-			pass
+			get_tree().change_scene_to_file("res://scenes/scene_1_2.tscn")
 
 
 func _on_on_screen_btns_button_pressed(button_type: String) -> void:
@@ -71,7 +71,9 @@ func _on_on_screen_btns_button_pressed(button_type: String) -> void:
 func _on_interractable_area_2d_body_entered(body: Node2D) -> void:
 	if body == player:
 		interractable_area_2d.highlight(true)
+		player_in_door2 = true
 
 func _on_interractable_area_2d_body_exited(body: Node2D) -> void:
 	if body == player:
-		interractable_area_2d.highlight(true)
+		interractable_area_2d.highlight(false)
+		player_in_door2 = false

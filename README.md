@@ -28,6 +28,3 @@ so on.
 |-|-|
 |29 July 2026|Created debug mode and accessories.|
 |31 July 2026|Added scene 1.2 - the store. and phantom camera to it.|
-
-
-
