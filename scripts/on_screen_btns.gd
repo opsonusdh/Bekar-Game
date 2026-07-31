@@ -114,7 +114,6 @@ func show_box(box):
 			weapon_sprite.scale = Vector2(72, 72) / tex.get_size()
 		else:
 			push_warning("Could not load weapon icon: %s" % weapon["icon_path"])
-		weapon_sprite.texture = ImageTexture.create_from_image(Image.load_from_file(weapon["icon_path"]))
 		weapon_sprite.scale = Vector2(72, 72)/weapon_sprite.texture.get_size()
 		weapon_level.text = str(weapon["damage"])
 		knowledge_scrape_value.text = str(hearts)
