@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://cl2d8fdcwkiil"]
+
+[ext_resource type="PackedScene" uid="uid://bu3caq8g5e2qc" path="res://scenes/player_1d.tscn" id="1_38umu"]
+[ext_resource type="Script" uid="uid://vmfyecrl3fl2" path="res://scripts/scene_1_1.gd" id="1_xdi8k"]
+[ext_resource type="Texture2D" uid="uid://c11aw5eevk0w6" path="res://assets/kochu babu.png" id="2_dyotw"]
+[ext_resource type="Texture2D" uid="uid://bxyd4nhhnux86" path="res://assets/classroom.png" id="2_j66ab"]
+[ext_resource type="PackedScene" uid="uid://c40k3aotf1fgm" path="res://scenes/border.tscn" id="3_dyotw"]
+[ext_resource type="PackedScene" uid="uid://dd3tm16kvdgmh" path="res://scenes/banner.tscn" id="4_5xjot"]
+[ext_resource type="PackedScene" uid="uid://cfjohipcskdvc" path="res://scenes/dpad.tscn" id="7_vngl7"]
+[ext_resource type="PackedScene" uid="uid://dc8ic7gghy1sm" path="res://scenes/interractable_area.tscn" id="8_ap77h"]
+[ext_resource type="PackedScene" uid="uid://r62yum3hyjqf" path="res://scenes/curtain.tscn" id="9_ap77h"]
+[ext_resource type="Texture2D" uid="uid://dwyoq6wk4dk28" path="res://assets/classroom_door.png" id="9_l8hy6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyotw"]
+size = Vector2(298.19064, 236)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1vivr"]
+normal = Vector2(0, 1)
+distance = 336.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_auskg"]
+distance = -320.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_v5gy4"]
+normal = Vector2(0.7587511, 0.65138066)
+distance = 136.77562
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qbdty"]
+normal = Vector2(-0.85573196, 0.51741934)
+
+[sub_resource type="GDScript" id="GDScript_2rf3j"]
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _gui_input(event):
+	if event is InputEventScreenDrag:
+		print(event.position)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(134.34293, 480)
+
+[node name="scene1_1" type="Node2D" unique_id=1127327781]
+script = ExtResource("1_xdi8k")
+
+[node name="Classroom" type="Sprite2D" parent="." unique_id=1292836409]
+position = Vector2(190, 86)
+texture = ExtResource("2_j66ab")
+
+[node name="CharacterBody1D" parent="." unique_id=1361898952 instance=ExtResource("1_38umu")]
+z_index = 2
+position = Vector2(-453, 47)
+scale = Vector2(3, 3)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody1D" unique_id=176725093]
+position = Vector2(151, -15.666667)
+scale = Vector2(0.33333334, 0.33333334)
+limit_left = -576
+limit_top = -425
+limit_right = 960
+limit_bottom = 599
+
+[node name="kochu" type="Area2D" parent="." unique_id=645640825]
+position = Vector2(47, 27)
+scale = Vector2(1.495, 1.495)
+
+[node name="banner" parent="kochu" unique_id=764233393 instance=ExtResource("4_5xjot")]
+visible = false
+texture_filter = 1
+position = Vector2(238.12708, -86.95652)
+scale = Vector2(1.3377926, 1.3377926)
+text = "hello"
+with_button = true
+button_label = "->"
+button_scale = Vector2(0.2, 0.2)
+button_label_shadow_color = Color(6.9870377, 0, 0, 0)
+button_label_shadow_size = 0.0
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="kochu" unique_id=822134490]
+position = Vector2(405, 53)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kochu/StaticBody2D3" unique_id=1503257507]
+position = Vector2(-405, -53)
+polygon = PackedVector2Array(370.56854, 28.762543, 321.07022, 26.086956, 317, 114, 379, 150, 434, 165, 518, 162, 516, -1, 491, -25, 456, -35, 450.1672, -171.90634, 418.7291, -173.24414, 393.31104, 9.36455)
+
+[node name="Sprite2D" type="Sprite2D" parent="kochu" unique_id=764884128]
+position = Vector2(452.725, 54.35)
+scale = Vector2(0.2362057, 0.22808783)
+texture = ExtResource("2_dyotw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kochu" unique_id=958416339]
+position = Vector2(391.90466, 49)
+shape = SubResource("RectangleShape2D_dyotw")
+
+[node name="borders" type="Node2D" parent="." unique_id=1209379979]
+
+[node name="StaticBody2D3" parent="borders" unique_id=1188558029 instance=ExtResource("3_dyotw")]
+position = Vector2(129, -440)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="borders/StaticBody2D3" unique_id=2052946966]
+shape = SubResource("WorldBoundaryShape2D_1vivr")
+
+[node name="StaticBody2D" parent="borders" unique_id=1719049031 instance=ExtResource("3_dyotw")]
+position = Vector2(0, 182)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="borders/StaticBody2D" unique_id=1923566933]
+position = Vector2(138, -279)
+shape = SubResource("WorldBoundaryShape2D_auskg")
+
+[node name="StaticBody2D" parent="." unique_id=502755352 instance=ExtResource("3_dyotw")]
+position = Vector2(-576, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=564794877]
+position = Vector2(1, 0)
+shape = SubResource("WorldBoundaryShape2D_v5gy4")
+
+[node name="StaticBody2D2" parent="." unique_id=1116827647 instance=ExtResource("3_dyotw")]
+position = Vector2(576, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1288157817]
+position = Vector2(184, 91)
+shape = SubResource("WorldBoundaryShape2D_qbdty")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1877888524]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=375263719]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_2rf3j")
+
+[node name="dpad" parent="CanvasLayer/Control" unique_id=1428397024 instance=ExtResource("7_vngl7")]
+position = Vector2(165, 462)
+scale = Vector2(3, 3)
+
+[node name="Interractable_Area2D" parent="." unique_id=1104267306 node_paths=PackedStringArray("sprite_2d", "collision_shape_2d") instance=ExtResource("8_ap77h")]
+z_index = 1
+position = Vector2(355, 92)
+scale = Vector2(1.21, 1.085)
+sprite_2d = NodePath("Sprite2D")
+collision_shape_2d = NodePath("CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="Interractable_Area2D" unique_id=1925911285]
+skew = -0.017453292
+texture = ExtResource("9_l8hy6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interractable_Area2D" unique_id=1743649434]
+position = Vector2(-640.72516, -141.93547)
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="curtain" parent="." unique_id=694973075 instance=ExtResource("9_ap77h")]
+z_index = 4
+position = Vector2(-59, -121)
+scale = Vector2(2.63, 2.63)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1648379243]
+
+[connection signal="body_entered" from="kochu" to="." method="_on_kochu_body_entered"]
+[connection signal="body_exited" from="kochu" to="." method="_on_kochu_body_exited"]
+[connection signal="banner_button_clicked" from="kochu/banner" to="." method="_on_banner_banner_button_clicked"]
+[connection signal="body_entered" from="Interractable_Area2D" to="." method="_on_interractable_area_2d_body_entered"]
+[connection signal="body_exited" from="Interractable_Area2D" to="." method="_on_interractable_area_2d_body_exited"]

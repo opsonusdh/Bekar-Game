@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cfjohipcskdvc"]
 
-[ext_resource type="Script" uid="uid://bwhxwpurwgnab" path="res://scripts/dpad.gd" id="1_8ho7a"]
+[ext_resource type="Script" uid="uid://c7e0hoqrwm6if" path="res://scripts/dpad.gd" id="1_8ho7a"]
 [ext_resource type="Texture2D" uid="uid://b8da6x3tyejik" path="res://assets/d-pad.png" id="1_wtcfe"]
 [ext_resource type="Texture2D" uid="uid://cln807u6hsgns" path="res://assets/d-pad-activated.png" id="2_0e48y"]
 [ext_resource type="Texture2D" uid="uid://cv43f66udulqw" path="res://assets/control_btns.png" id="4_35btk"]
@@ -89,6 +89,14 @@ region = Rect2(87, 0, 18, 17)
 atlas = ExtResource("4_35btk")
 region = Rect2(87, 18, 18, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2khor"]
+atlas = ExtResource("4_35btk")
+region = Rect2(0, 43, 18, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5gy4"]
+atlas = ExtResource("4_35btk")
+region = Rect2(0, 60, 18, 17)
+
 [node name="control" type="Node2D" unique_id=1428397024]
 texture_filter = 1
 script = ExtResource("1_8ho7a")
@@ -160,3 +168,8 @@ scale = Vector2(1.5, 1.5)
 texture_normal = SubResource("AtlasTexture_rw4ux")
 texture_pressed = SubResource("AtlasTexture_u8wmi")
 action = "interract"
+
+[node name="swap button" type="TouchScreenButton" parent="." unique_id=887397401]
+position = Vector2(213, -15)
+texture_normal = SubResource("AtlasTexture_2khor")
+texture_pressed = SubResource("AtlasTexture_v5gy4")

@@ -26,12 +26,15 @@ var index = 0
 @onready var curtain: Area2D = $curtain
 @onready var dpad: Node2D = $CanvasLayer/Control/dpad
 @onready var interractable_area_2d: Area2D = $Interractable_Area2D
+@onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+var sound = preload("res://audio/kochu babu.mp3")
 var player_in_interractable_door = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var data = Global.load_data()
+	audio_stream_player.stream = sound
 	if data.get("player", {}).get("completed_tutorial", false):
 		index = len(dialouge)-1
 		banner.with_button = false
@@ -45,25 +48,26 @@ func _ready() -> void:
 		dpad.interract_visible = false
 	
 	banner.text = dialouge[index]
-	dpad._ready()
+	dpad.apply_configuration()
 	banner._ready()
 	
 	await curtain.play_animation(curtain.FADEOUT)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_key_pressed(KEY_P):
 		index = len(dialouge)-2
 	if Input.is_action_just_pressed("interract") and player_in_interractable_door:
 		await curtain.play_animation(curtain.FADEIN)
-		get_tree().change_scene_to_file("res://scenes/scene_1.tscn")
+		get_tree().change_scene_to_file("res://scenes/scene 1.tscn")
 
 
 func _on_kochu_body_entered(body: Node2D) -> void:
 	if body == player:
 		banner.show()
 		dpad.modulate = Color(1, 1, 1, 0.5)
+		audio_stream_player.play()
 
 func _on_kochu_body_exited(body: Node2D) -> void:
 	if body == player:
@@ -71,7 +75,7 @@ func _on_kochu_body_exited(body: Node2D) -> void:
 		dpad.modulate = Color(1, 1, 1, 1)
 
 
-func _on_banner_banner_button_clicked(id: Variant) -> void:
+func _on_banner_banner_button_clicked(_id: Variant) -> void:
 	index += 1
 	if index >= len(dialouge):
 		get_tree().change_scene_to_file("res://scenes/scene 1_1_1.tscn")

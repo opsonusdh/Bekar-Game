@@ -19,8 +19,8 @@ func _ready():
 		start_disappear_countdown(disappear_time)
 
 
-func start_disappear_countdown(disappear_time):
-	await get_tree().create_timer(disappear_time).timeout
+func start_disappear_countdown(countdown_time: float) -> void:
+	await get_tree().create_timer(countdown_time).timeout
 	queue_free()
 
 

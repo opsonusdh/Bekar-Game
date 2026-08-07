@@ -37,13 +37,14 @@ func _ready() -> void:
 	are_you_sure_to_restart.hide()
 	if not Global.DEBUG:
 		debug_button.hide()
-	if not FileAccess.file_exists(Global.path):
+	if not FileAccess.file_exists(Global.SAVE_PATH):
+		Global.save_data(Global.GLOBAL_FILE_TEMPLATE)
 		get_tree().change_scene_to_file("res://scenes/game entry.tscn")
 	else:
 		data = Global.load_data()
 		print(data)
 		if not data:
-			Global.save_data({"player": {}})
+			Global.save_data(Global.GLOBAL_FILE_TEMPLATE)
 			get_tree().change_scene_to_file("res://scenes/game entry.tscn")
 		
 		var btns = [$"Text Button", $"Text Button2", $"Text Button3", 
@@ -109,18 +110,26 @@ func _on_any_button_clicked(id: int):
 	elif id == 7 or id == 12:
 		camera.global_position = Vector2(1808, 1004)
 		data = Global.load_data()
-		text_edit.text = JSON.stringify(data, "\t")
+		text_edit.text = JSON.stringify(Global.variant_to_json(data), "\t")
 		
+		var syntax = text_edit.syntax_highlighter
+		syntax.add_color_region("\"", "\"", Color(1, 0, 1))
+		syntax.add_color_region(": '", "'", Color(1, 1, 0))
+		syntax.add_color_region(":'", "'", Color(1, 1, 0))
+		syntax.add_color_region("'", "'", Color(1, 0, 1))
+		syntax.add_color_region(": \"", "\"", Color(1, 1, 0))
+		syntax.add_color_region(":\"", "\"", Color(1, 1, 0))
+
 	elif id == 8:
 		camera.position = Vector2(0, 0)
 	elif id == 11:
 		var text = text_edit.text
 		var json = JSON.new()
 		var error = json.parse(text)
-
 		
 		if error == OK:
-			Global.save_data(json.data)
+			var _data = Global.json_to_variant(json.data)
+			Global.save_data(_data)
 			report.text = "Game data saved successfully"
 		else:
 			report.text = "Error: " + json.get_error_message()

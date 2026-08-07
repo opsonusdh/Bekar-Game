@@ -3,7 +3,7 @@ extends Node2D
 @export var text := ""
 @export var label_shadow_color := Color(0, 0, 0, 0)
 @export var label_shadow_offset := Vector2(0, 0)
-@export var label_shadow_size := 0.0
+@export var label_shadow_size := 0
 
 @export var with_button := false
 @export var button_id := 0
@@ -11,7 +11,7 @@ extends Node2D
 @export var button_scale := Vector2(1, 1)
 @export var button_label_shadow_color := Color(6.988, 0.0, 0.0)
 @export var button_label_shadow_offset := Vector2(1, 1)
-@export var button_label_shadow_size := 5.0
+@export var button_label_shadow_size := 5
 @export var button_label_colour := Color(0.239, 0.0, 0.0)
 
 signal banner_button_clicked(id)
@@ -76,7 +76,8 @@ func _ready() -> void:
 			panel.position.x + panel.size.x - button_size.x / 2 - BUTTON_MARGIN.x,
 			panel.position.y + panel.size.y - button_size.y / 2 - BUTTON_MARGIN.y
 		)
-		text_button.button_clicked.connect(_on_button_clicked)
+		
 
-func _on_button_clicked(id: int) -> void:
+
+func _on_text_button_button_clicked(id: Variant) -> void:
 	banner_button_clicked.emit(id)

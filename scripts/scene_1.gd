@@ -23,7 +23,7 @@ func _ready() -> void:
 		on_screen_btns.dpad_crouch_visible = false
 		on_screen_btns.dpad_fire_visible = false
 		on_screen_btns.dpad_interract_visible = false
-		on_screen_btns._ready()
+		on_screen_btns.apply_configuration()
 	elif _player.get("completed_btn_desc", false) and _player.get("completed_tutorial", false):
 		pass
 	Global.save_data(data)
@@ -40,13 +40,13 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		touch_screen_button.hide()
 		player_in_door1 = false
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("interract"):
 		if player_in_door1:
 			await curtain.play_animation(curtain.FADEIN)
-			get_tree().change_scene_to_file("res://scenes/scene_1_1.tscn")
-		elif player_in_door2:
-			get_tree().change_scene_to_file("res://scenes/scene_1_2.tscn")
+			get_tree().change_scene_to_file("res://scenes/scene 1_1.tscn")
+		if player_in_door2:
+			get_tree().change_scene_to_file("res://scenes/scene 1_2.tscn")
 
 
 func _on_on_screen_btns_button_pressed(button_type: String) -> void:

@@ -9,6 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://c5gnoeo3v4h46" path="res://assets/porimal taraphdar.png" id="6_ee38v"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="7_icspw"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_e25k8"]
+[ext_resource type="Texture2D" uid="uid://d06lcf1h1a74p" path="res://assets/btns.png" id="9_5j24d"]
+[ext_resource type="FontFile" uid="uid://1qvf4bfa6e1h" path="res://font/Minecraft.ttf" id="10_f5mso"]
+[ext_resource type="Texture2D" uid="uid://ce5kks4inab2g" path="res://assets/potions and enchantments and weapons.png" id="10_v2gml"]
+[ext_resource type="Texture2D" uid="uid://bc4638y5ri6wb" path="res://assets/knowledge scraps.png" id="11_cr2m5"]
+[ext_resource type="PackedScene" uid="uid://d263d0et0a5dr" path="res://scenes/on_screen_btns.tscn" id="11_ee38v"]
+[ext_resource type="FontFile" uid="uid://dx1fdpl0evyfh" path="res://font/GomePixel-DYJX1.otf" id="12_qg0nl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8vrlf"]
 normal = Vector2(1, 0)
@@ -24,8 +30,235 @@ normal = Vector2(-1, 0)
 atlas = ExtResource("6_ee38v")
 region = Rect2(35, 54, 575, 566)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbdty"]
+atlas = ExtResource("6_ee38v")
+region = Rect2(649, 277, 443, 567)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5tgd"]
+atlas = ExtResource("6_ee38v")
+region = Rect2(1328, 285, 266, 291)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sxyj"]
+atlas = ExtResource("6_ee38v")
+region = Rect2(1629, 283, 314, 201)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(856, 403)
+
+[sub_resource type="Animation" id="Animation_qg0nl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("porimol babu hair:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(1629, 283, 314, 201)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("porimol babu hair:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3.9999993, -119)]
+}
+
+[sub_resource type="Animation" id="Animation_42h58"]
+resource_name = "hair"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("porimol babu hair:texture:region")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(1629, 283, 314, 201), Rect2(1626, 521, 327, 192), Rect2(1629, 735, 327, 175), Rect2(1636, 946, 347, 172), Rect2(1614, 1122, 380, 183), Rect2(660, 1232, 403, 170), Rect2(1131, 1233, 394, 167), Rect2(674, 1040, 376, 153), Rect2(1074, 1041, 357, 159), Rect2(1101, 803, 329, 191)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("porimol babu hair:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(4, -119.095), Vector2(5.685, -116.345), Vector2(5.825, -114.06), Vector2(8.65, -114.06), Vector2(12.955, -115.5), Vector2(16.2, -113.635), Vector2(15.17, -113.21), Vector2(12.53, -111.66), Vector2(9.895, -111.75), Vector2(6.015, -116.52)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pryi7"]
+_data = {
+&"RESET": SubResource("Animation_qg0nl"),
+&"hair": SubResource("Animation_42h58")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2pp6"]
+size = Vector2(22.400574, 32.033604)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auskg"]
+atlas = ExtResource("10_v2gml")
+region = Rect2(1205, 8, 225, 334)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5gy4"]
+atlas = ExtResource("10_v2gml")
+region = Rect2(963, 8, 221, 334)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v2gml"]
+radius = 65.85
+height = 187.56
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_313gx"]
+atlas = ExtResource("10_v2gml")
+region = Rect2(177, 46, 131, 189)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(145.605, 242.235)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vrlf"]
+atlas = ExtResource("10_v2gml")
+region = Rect2(18, 8, 111, 234)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw4ux"]
+atlas = ExtResource("2_3hu51")
+region = Rect2(911, 55, 381, 436)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbdty"]
+size = Vector2(380, 465)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2pp6"]
+atlas = ExtResource("9_5j24d")
+region = Rect2(1, 1, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7cuq"]
+atlas = ExtResource("9_5j24d")
+region = Rect2(3, 19, 16, 16)
+
+[sub_resource type="Animation" id="Animation_ee38v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5j24d"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6aeky"]
+_data = {
+&"RESET": SubResource("Animation_ee38v"),
+&"show": SubResource("Animation_5j24d")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_8vrlf"]
+font = ExtResource("10_f5mso")
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+font = ExtResource("12_qg0nl")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_v5gy4"]
+line_spacing = 2.0
+font = ExtResource("10_f5mso")
+font_size = 13
+
+[sub_resource type="Animation" id="Animation_16r3t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("price section:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f5mso"]
+resource_name = "fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cr2m5"]
+resource_name = "insufficient_balance"
+length = 0.43333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("price section:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.19999999, 0.26666668, 0.3, 0.36666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cr2m5"]
+_data = {
+&"RESET": SubResource("Animation_16r3t"),
+&"fadein": SubResource("Animation_f5mso"),
+&"insufficient_balance": SubResource("Animation_cr2m5")
+}
 
 [sub_resource type="Resource" id="Resource_v2gml"]
 script = ExtResource("8_e25k8")
@@ -36,6 +269,7 @@ script = ExtResource("8_e25k8")
 transition = 7
 
 [node name="Node2D" type="Node2D" unique_id=2140072350]
+texture_filter = 1
 script = ExtResource("1_muamw")
 
 [node name="Scene12Bg" type="Sprite2D" parent="." unique_id=978760499]
@@ -93,13 +327,172 @@ collision_shape_2d = NodePath("CollisionShape2D")
 shadow_scale = 1.025
 
 [node name="porimal babu" type="Sprite2D" parent="Interractable_Area2D" unique_id=1304619678]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(-3.8146973e-06, -4)
 scale = Vector2(0.385, 0.385)
 texture = SubResource("AtlasTexture_1vivr")
 
+[node name="porimal babu overlay" type="Sprite2D" parent="Interractable_Area2D" unique_id=2100944525]
+position = Vector2(-24.807495, -6.000003)
+scale = Vector2(0.38913095, 0.39)
+texture = SubResource("AtlasTexture_qbdty")
+
+[node name="porimal babu hand" type="Sprite2D" parent="Interractable_Area2D" unique_id=2100071637]
+position = Vector2(59.595, 49)
+scale = Vector2(0.385, 0.385)
+texture = SubResource("AtlasTexture_o5tgd")
+
+[node name="porimol babu hair" type="Sprite2D" parent="Interractable_Area2D" unique_id=831362788]
+texture_filter = 1
+position = Vector2(3.9999993, -119)
+scale = Vector2(0.27, 0.265)
+texture = SubResource("AtlasTexture_0sxyj")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interractable_Area2D" unique_id=1296615991]
-position = Vector2(-6, 188.5)
+position = Vector2(-3, 182)
 shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Interractable_Area2D" unique_id=230771276]
+libraries/ = SubResource("AnimationLibrary_pryi7")
+autoplay = &"hair"
+
+[node name="potions and enchantments" type="Node2D" parent="." unique_id=1317691059]
+texture_filter = 1
+
+[node name="books" type="Node2D" parent="potions and enchantments" unique_id=834802743]
+z_index = 1
+position = Vector2(210, -2.9999995)
+scale = Vector2(1.98, 1.98)
+
+[node name="multishot" parent="potions and enchantments/books" unique_id=933053684 node_paths=PackedStringArray("sprite_2d", "collision_shape_2d") instance=ExtResource("5_v2gml")]
+position = Vector2(5.722046e-06, 2.0202017)
+scale = Vector2(1, 0.5)
+sprite_2d = NodePath("Sprite2D")
+collision_shape_2d = NodePath("CollisionShape2D")
+shadow_scale = 1.22
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="potions and enchantments/books/multishot" unique_id=1822729745]
+position = Vector2(0.3991394, -1.5000007)
+skew = -0.6754425
+shape = SubResource("RectangleShape2D_d2pp6")
+
+[node name="Sprite2D" type="Sprite2D" parent="potions and enchantments/books/multishot" unique_id=1330077192]
+texture_filter = 1
+position = Vector2(1, 0)
+scale = Vector2(0.1, 0.1)
+skew = -0.6981317
+texture = SubResource("AtlasTexture_auskg")
+
+[node name="accuracy" parent="potions and enchantments/books" unique_id=632908803 node_paths=PackedStringArray("sprite_2d", "collision_shape_2d") instance=ExtResource("5_v2gml")]
+position = Vector2(5.722046e-06, 2.0202017)
+scale = Vector2(1, 0.5)
+sprite_2d = NodePath("Sprite2D")
+collision_shape_2d = NodePath("CollisionShape2D")
+shadow_scale = 1.22
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="potions and enchantments/books/accuracy" unique_id=332300683]
+position = Vector2(-26.767685, 1.0101013)
+skew = -0.6754425
+shape = SubResource("RectangleShape2D_d2pp6")
+
+[node name="Sprite2D" type="Sprite2D" parent="potions and enchantments/books/accuracy" unique_id=246192536]
+position = Vector2(-27.777788, 1.0101013)
+scale = Vector2(0.1, 0.1)
+skew = -0.6981317
+texture = SubResource("AtlasTexture_v5gy4")
+
+[node name="potion" parent="potions and enchantments" unique_id=136853934 node_paths=PackedStringArray("sprite_2d", "collision_shape_2d") instance=ExtResource("5_v2gml")]
+position = Vector2(-405, -47)
+scale = Vector2(0.565, 0.565)
+sprite_2d = NodePath("Sprite2D2")
+collision_shape_2d = NodePath("CollisionShape2D")
+shadow_scale = 1.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="potions and enchantments/potion" unique_id=1774366074]
+shape = SubResource("CapsuleShape2D_v2gml")
+
+[node name="Sprite2D2" type="Sprite2D" parent="potions and enchantments/potion" unique_id=518922704]
+texture = SubResource("AtlasTexture_313gx")
+
+[node name="pens" parent="potions and enchantments" unique_id=1629482635 node_paths=PackedStringArray("sprite_2d", "collision_shape_2d") instance=ExtResource("5_v2gml")]
+position = Vector2(-232.00002, -31.000002)
+scale = Vector2(0.34, 0.34)
+sprite_2d = NodePath("Sprite2D")
+collision_shape_2d = NodePath("CollisionShape2D")
+shadow_scale = 1.155
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="potions and enchantments/pens" unique_id=868972610]
+shape = SubResource("RectangleShape2D_8vrlf")
+
+[node name="Sprite2D" type="Sprite2D" parent="potions and enchantments/pens" unique_id=79134756]
+texture = SubResource("AtlasTexture_8vrlf")
+
+[node name="enchantments" parent="potions and enchantments" unique_id=172870352 node_paths=PackedStringArray("sprite_2d", "collision_shape_2d") instance=ExtResource("5_v2gml")]
+position = Vector2(333, -234)
+sprite_2d = NodePath("Sprite2D")
+collision_shape_2d = NodePath("CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="potions and enchantments/enchantments" unique_id=102354387]
+texture = SubResource("AtlasTexture_rw4ux")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="potions and enchantments/enchantments" unique_id=1335847014]
+position = Vector2(-15, 77.5)
+shape = SubResource("RectangleShape2D_qbdty")
+
+[node name="cross" type="TouchScreenButton" parent="potions and enchantments" unique_id=709730060]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(321, 44)
+scale = Vector2(1.5, 1.5)
+texture_normal = SubResource("AtlasTexture_d2pp6")
+texture_pressed = SubResource("AtlasTexture_u7cuq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="potions and enchantments/cross" unique_id=1775410396]
+libraries/ = SubResource("AnimationLibrary_6aeky")
+autoplay = &"show"
+
+[node name="data vis" type="Node2D" parent="potions and enchantments" unique_id=785446147]
+
+[node name="price section" type="Node2D" parent="potions and enchantments/data vis" unique_id=740658490]
+
+[node name="price" type="Label" parent="potions and enchantments/data vis/price section" unique_id=1036641164]
+offset_left = -107.0
+offset_top = 68.0
+offset_right = -67.0
+offset_bottom = 84.0
+text = "999"
+label_settings = SubResource("LabelSettings_8vrlf")
+vertical_alignment = 1
+
+[node name="KnowledgeScraps" type="Sprite2D" parent="potions and enchantments/data vis/price section" unique_id=1592293702]
+position = Vector2(-130, 74)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("11_cr2m5")
+
+[node name="heading" type="Label" parent="potions and enchantments/data vis" unique_id=257816863]
+offset_left = -383.0
+offset_top = 64.0
+offset_right = -156.0
+offset_bottom = 83.0
+label_settings = SubResource("LabelSettings_1vivr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="image" type="Sprite2D" parent="potions and enchantments/data vis" unique_id=1603012317]
+position = Vector2(-352, 114)
+
+[node name="Label" type="Label" parent="potions and enchantments/data vis" unique_id=1527064632]
+texture_filter = 1
+offset_left = -321.0
+offset_top = 91.0
+offset_right = -68.0
+offset_bottom = 146.0
+label_settings = SubResource("LabelSettings_v5gy4")
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="potions and enchantments/data vis" unique_id=1291714903]
+libraries/ = SubResource("AnimationLibrary_cr2m5")
+autoplay = &"fadein"
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1066365183 node_paths=PackedStringArray("follow_target")]
 top_level = true
@@ -132,5 +525,9 @@ tween_resource = SubResource("Resource_e25k8")
 draw_limits = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
+[node name="on_screen_btns" parent="." unique_id=142624398 instance=ExtResource("11_ee38v")]
+
 [connection signal="body_entered" from="Interractable_Area2D" to="." method="_on_interractable_area_2d_body_entered"]
 [connection signal="body_exited" from="Interractable_Area2D" to="." method="_on_interractable_area_2d_body_exited"]
+[connection signal="released" from="potions and enchantments/cross" to="." method="_on_cross_released"]
+[connection signal="button_pressed" from="on_screen_btns" to="." method="_on_on_screen_btns_button_pressed"]

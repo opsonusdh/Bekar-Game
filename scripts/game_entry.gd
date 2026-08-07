@@ -5,13 +5,16 @@ extends Node2D
 @onready var dpad: Node2D = $CanvasLayer/Control/dpad
 var next_scene = preload("res://scenes/jumpscare.tscn")
 
-var data = {}
+var data = Global.load_data()
 var movement_data = []
 
 
 func _ready() -> void:
-	if not FileAccess.file_exists(Global.path):
-		Global.save_data({"player": {}})
+	if data == {}:
+		data = Global.GLOBAL_FILE_TEMPLATE
+		Global.save_data(data)
+	if not FileAccess.file_exists(Global.SAVE_PATH):
+		Global.save_data(data)
 	else:
 		data = Global.load_data()
 		data["current_scene"] = get_tree().current_scene.scene_file_path
@@ -23,7 +26,7 @@ func _ready() -> void:
 		dpad.crouch_visible = false
 		dpad.fire_visible = false
 		dpad.interract_visible = false
-		dpad._ready()
+		dpad.apply_configuration()
 
 func _on_entrance_of_main_game_enter_btn_pressed() -> void:
 	data["completed_scenes"] = get_tree().current_scene.scene_file_path

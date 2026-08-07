@@ -25,4 +25,4 @@ func _on_timer_timeout() -> void:
 		timer.start()
 		phase = 2
 	elif phase == 2:
-		get_tree().change_scene_to_file("res://scenes/scene_1.tscn")
+		get_tree().change_scene_to_file("res://scenes/scene 1.tscn")

@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://b2ydu206f0lcb"]
+
+[ext_resource type="Script" uid="uid://bqfc06k622tvp" path="res://scripts/scene_1.gd" id="1_d7a6c"]
+[ext_resource type="PackedScene" uid="uid://bu3caq8g5e2qc" path="res://scenes/player_1d.tscn" id="1_lki8s"]
+[ext_resource type="PackedScene" uid="uid://cs5qekpvbxd67" path="res://scenes/background.tscn" id="2_t6bmd"]
+[ext_resource type="Texture2D" uid="uid://dfn08d7l8ofxk" path="res://assets/school coridoor background.jpeg" id="3_d7a6c"]
+[ext_resource type="PackedScene" uid="uid://clwbo46x660qg" path="res://scenes/foreground.tscn" id="4_g2j0d"]
+[ext_resource type="Texture2D" uid="uid://bug5yjdng727f" path="res://assets/school coridoor foreground.png" id="5_p837x"]
+[ext_resource type="PackedScene" uid="uid://c40k3aotf1fgm" path="res://scenes/border.tscn" id="6_t6bmd"]
+[ext_resource type="Texture2D" uid="uid://tbm313g6v22r" path="res://assets/wall painting 0.png" id="7_ybqas"]
+[ext_resource type="Texture2D" uid="uid://dxtwu6st48gt5" path="res://assets/class id.png" id="8_p837x"]
+[ext_resource type="FontFile" uid="uid://1qvf4bfa6e1h" path="res://font/Minecraft.ttf" id="9_r02jg"]
+[ext_resource type="Texture2D" uid="uid://ypeasscjlq3r" path="res://assets/go btn.png" id="10_ig65t"]
+[ext_resource type="PackedScene" uid="uid://dc8ic7gghy1sm" path="res://scenes/interractable_area.tscn" id="11_jdgsh"]
+[ext_resource type="Texture2D" uid="uid://di24bpt00nypp" path="res://assets/coridoor door.png" id="12_6r6dc"]
+[ext_resource type="PackedScene" uid="uid://r62yum3hyjqf" path="res://scenes/curtain.tscn" id="13_ybqas"]
+[ext_resource type="PackedScene" uid="uid://d263d0et0a5dr" path="res://scenes/on_screen_btns.tscn" id="14_rbtea"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqnbp"]
+atlas = ExtResource("3_d7a6c")
+region = Rect2(10, 26, 1605, 894)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vivr"]
+atlas = ExtResource("5_p837x")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_v5gy4"]
+normal = Vector2(0.999983, 0.005830805)
+distance = 11.993965
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8vrlf"]
+normal = Vector2(-1, 0)
+distance = 18.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1vivr"]
+distance = 44.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+font = ExtResource("9_r02jg")
+font_size = 12
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(230, 384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(228, 384)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lv108"]
+load_path = "res://.godot/imported/go btn.png-15ea74450bdf4284a5d35757a333d9fb.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybqas"]
+atlas = ExtResource("10_ig65t")
+region = Rect2(1, 1, 15, 15)
+
+[node name="scene 1" type="Node2D" unique_id=1330261440]
+script = ExtResource("1_d7a6c")
+
+[node name="CharacterBody1D" parent="." unique_id=1361898952 instance=ExtResource("1_lki8s")]
+z_index = 2
+scale = Vector2(4, 4)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody1D" unique_id=1381219682]
+zoom = Vector2(1.225, 1.225)
+limit_left = -452
+limit_top = -317
+limit_right = 2793
+limit_bottom = 211
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="back and fore ground" type="Node2D" parent="." unique_id=1322059526]
+
+[node name="background" parent="back and fore ground" unique_id=1316031889 instance=ExtResource("2_t6bmd")]
+position = Vector2(351, 6)
+texture = SubResource("AtlasTexture_xqnbp")
+
+[node name="background2" parent="back and fore ground" unique_id=1282800800 instance=ExtResource("2_t6bmd")]
+position = Vector2(1956, 6)
+texture = SubResource("AtlasTexture_xqnbp")
+
+[node name="foreground" parent="back and fore ground" unique_id=711558214 instance=ExtResource("4_g2j0d")]
+position = Vector2(52, -55)
+texture = SubResource("AtlasTexture_1vivr")
+
+[node name="foreground2" parent="back and fore ground" unique_id=221200850 instance=ExtResource("4_g2j0d")]
+position = Vector2(3252, -55)
+texture = SubResource("AtlasTexture_1vivr")
+
+[node name="foreground3" parent="back and fore ground" unique_id=584611368 instance=ExtResource("4_g2j0d")]
+position = Vector2(1652, -55)
+texture = SubResource("AtlasTexture_1vivr")
+
+[node name="Sprite2D" type="Sprite2D" parent="back and fore ground" unique_id=1382763800]
+position = Vector2(-30, -86.00001)
+scale = Vector2(0.61406255, 0.5865385)
+texture = ExtResource("7_ybqas")
+
+[node name="borders" type="Node2D" parent="." unique_id=370352144]
+
+[node name="StaticBody2D3" parent="borders" unique_id=1188558029 instance=ExtResource("6_t6bmd")]
+position = Vector2(-458, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="borders/StaticBody2D3" unique_id=1434977221]
+shape = SubResource("WorldBoundaryShape2D_v5gy4")
+
+[node name="StaticBody2D2" parent="borders" unique_id=1326664099 instance=ExtResource("6_t6bmd")]
+position = Vector2(2765, 19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="borders/StaticBody2D2" unique_id=1587956563]
+shape = SubResource("WorldBoundaryShape2D_8vrlf")
+
+[node name="StaticBody2D" parent="borders" unique_id=715357717 instance=ExtResource("6_t6bmd")]
+visible = false
+position = Vector2(-9, 244)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="borders/StaticBody2D" unique_id=472691672]
+shape = SubResource("WorldBoundaryShape2D_1vivr")
+
+[node name="class names" type="Node2D" parent="." unique_id=800855354]
+
+[node name="Sprite2D" type="Sprite2D" parent="class names" unique_id=875765408]
+texture_filter = 1
+position = Vector2(-256, -262)
+scale = Vector2(4, 4)
+texture = ExtResource("8_p837x")
+
+[node name="Label" type="Label" parent="class names/Sprite2D" unique_id=131685006]
+offset_left = -18.5
+offset_top = -10.0
+offset_right = 8.5
+offset_bottom = 6.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(5.265, 2.695)
+offset_transform_scale = Vector2(0.5, 0.5)
+text = "5-A"
+label_settings = SubResource("LabelSettings_1vivr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="class names" unique_id=1486352569]
+texture_filter = 1
+position = Vector2(1344.16, -262)
+scale = Vector2(4, 4)
+texture = ExtResource("8_p837x")
+
+[node name="Label" type="Label" parent="class names/Sprite2D3" unique_id=728511303]
+offset_left = -18.2575
+offset_top = -9.75
+offset_right = 8.7425
+offset_bottom = 6.25
+offset_transform_enabled = true
+offset_transform_position = Vector2(5.265, 2.695)
+offset_transform_scale = Vector2(0.5, 0.5)
+text = "5-B"
+label_settings = SubResource("LabelSettings_1vivr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="areas" type="Node2D" parent="." unique_id=1207059567]
+
+[node name="Area2D" type="Area2D" parent="areas" unique_id=1339165945]
+position = Vector2(-256, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/Area2D" unique_id=1912605803]
+position = Vector2(-1, -10)
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="Interractable_Area2D" parent="areas" unique_id=1104267306 node_paths=PackedStringArray("sprite_2d", "collision_shape_2d") instance=ExtResource("11_jdgsh")]
+z_index = 1
+position = Vector2(1352, -9)
+sprite_2d = NodePath("Sprite2D")
+collision_shape_2d = NodePath("CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="areas/Interractable_Area2D" unique_id=265351686]
+position = Vector2(-3.56, -20.38)
+texture = ExtResource("12_6r6dc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/Interractable_Area2D" unique_id=595529591]
+position = Vector2(-4, -19)
+shape = SubResource("RectangleShape2D_8vrlf")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="." unique_id=499052339]
+visible = false
+texture_filter = 1
+position = Vector2(-324, -87)
+scale = Vector2(3.875, 4)
+texture_normal = SubResource("CompressedTexture2D_lv108")
+texture_pressed = SubResource("AtlasTexture_ybqas")
+action = "interract"
+
+[node name="curtain" parent="." unique_id=694973075 instance=ExtResource("13_ybqas")]
+z_index = 5
+position = Vector2(309, -98)
+scale = Vector2(7.535, 7.535)
+
+[node name="on_screen_btns" parent="." unique_id=142624398 instance=ExtResource("14_rbtea")]
+
+[connection signal="body_entered" from="areas/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="areas/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="areas/Interractable_Area2D" to="." method="_on_interractable_area_2d_body_entered"]
+[connection signal="body_exited" from="areas/Interractable_Area2D" to="." method="_on_interractable_area_2d_body_exited"]
+[connection signal="button_pressed" from="on_screen_btns" to="." method="_on_on_screen_btns_button_pressed"]

@@ -47,6 +47,15 @@ font_size = 32
 font_color = Color(0.23921569, 0, 0, 1)
 shadow_color = Color(6.988, 0, 0, 1)
 
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_2ytni"]
+number_color = Color(0.4, 0.8, 1, 1)
+symbol_color = Color(0, 1, 0, 1)
+keyword_colors = {
+"false": Color(0.7, 0.4, 1, 1),
+"null": Color(0.7, 0.4, 1, 1),
+"true": Color(0.7, 0.4, 1, 1)
+}
+
 [node name="loading" type="Node2D" unique_id=351937891]
 texture_filter = 1
 script = ExtResource("1_yt702")
@@ -54,6 +63,7 @@ script = ExtResource("1_yt702")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=83989375]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=200208363]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_dhqfv")
 
 [node name="Label" type="Label" parent="." unique_id=1032119724]
@@ -149,6 +159,7 @@ text = "No"
 position = Vector2(1939, -5)
 
 [node name="BlackBg" type="Sprite2D" parent="Debug" unique_id=1941110479]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_dhqfv")
 offset = Vector2(2, -4)
 
@@ -182,7 +193,7 @@ text = "Back"
 
 [node name="BlackBg" type="Sprite2D" parent="Debug/Jump to Scene" unique_id=842259932]
 position = Vector2(-1933, 998)
-scale = Vector2(1.2148637, 1.3298278)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_dhqfv")
 offset = Vector2(2, -4)
 
@@ -224,6 +235,10 @@ offset_left = -649.0
 offset_top = 806.0
 offset_right = 384.0
 offset_bottom = 1217.0
+scroll_smooth = true
+minimap_draw = true
+syntax_highlighter = SubResource("CodeHighlighter_2ytni")
+highlight_all_occurrences = true
 
 [node name="Label" type="Label" parent="Debug/Edit Game File" unique_id=1760188647]
 z_index = 1

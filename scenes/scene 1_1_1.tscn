@@ -166,6 +166,7 @@ size = Vector2(136, 184)
 [node name="Node2D" type="Node2D" unique_id=1358085375]
 texture_filter = 1
 script = ExtResource("1_w1kiy")
+completion_scene_path = "res://scenes/scene 1_1.tscn"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=445669748 groups=["wall"]]
 texture_filter = 1

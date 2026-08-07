@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cyi6rbwtn0sqh"]
+
+[ext_resource type="PackedScene" uid="uid://c07f1krctjlj6" path="res://scenes/projectiles.tscn" id="1_37wyy"]
+[ext_resource type="Texture2D" uid="uid://ce5kks4inab2g" path="res://assets/potions and enchantments and weapons.png" id="2_37wyy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja74x"]
+atlas = ExtResource("2_37wyy")
+region = Rect2(153, 287, 261, 435)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_864oa"]
+points = PackedVector2Array(226.5, -14.5, 258.5, -3.5, 257.5, 23.5, 224.5, 41.5, -163.5, 38.5, -237.5, 5.5, -154.5, -23.5, 53.5, -21.5, 80.5, -36.5, 199.5, -31.5)
+
+[node name="projectiles" unique_id=1005893292 instance=ExtResource("1_37wyy")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=1688340611]
+rotation = 1.0646509
+texture = SubResource("AtlasTexture_ja74x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1" unique_id=257752353]
+position = Vector2(-13.5, -10.5)
+shape = SubResource("ConvexPolygonShape2D_864oa")

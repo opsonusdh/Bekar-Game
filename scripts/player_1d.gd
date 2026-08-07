@@ -5,35 +5,32 @@ extends CharacterBody2D
 @onready var shooting_point: Node2D = $"shooting point"
 @onready var hurtbox: CollisionShape2D = $hurtbox/CollisionShape2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+@export var movable := true
+@export var jumpable := true
+@export var shootable := true
 
 signal player_died
 #const DASH_SPEED = 600          #DASHING IS DISABLED NOW
 
 var data = Global.load_data()
 var _player = data.get("player", {})
-var health = _player.get("health", 3)
+var health = _player.get("max_hearts", 3)
 var speed = _player.get("speed", 300)
 var jump_velocity = _player.get("jump_velocity", -600)
+
+var running_sound = preload("res://audio/running.mp3")
+var jumping_sound = preload("res://audio/jump.mp3")
+var grond_hit_sound = preload("res://audio/ground hit.mp3")
 
 
 var speed_factor = 1
 var jump_velocity_factor = 1
 var shoot_factor = 1
 
-var weapon = _player.get(
-	"active_weapon",
-	{
-		"name": "pensil", 
-		"damage": 1, 
-		"icon_path": "res://assets/pensil.png", 
-		"scene_path": "res://scenes/pensil.tscn", 
-		"shootout_cooldown": 0.2, 
-		"disappear_time": 0.5, 
-		"shooting_speed": 100, 
-		"scale": 0.03
-	}
-)
+var active_weapon = _player.get("active_weapon", "pensil")
+var weapon = Global.WEAPONS[active_weapon]
 
 var PROJECTILES = load(weapon["scene_path"])
 var attr_dict = {
@@ -52,7 +49,17 @@ var current_dir := 1.0
 var cooldown := 0.0
 var position_lock := false
 var pos_factor = 1
+var will_jump = true
+var will_jump_within = 0
 #var is_dashing = false
+
+func _ready() -> void:
+	Global.Player_weapon_changed.connect(_on_player_weapon_changed)
+	
+func _on_player_weapon_changed(new_weapon):
+	active_weapon = new_weapon
+	weapon = Global.WEAPONS[active_weapon]
+	PROJECTILES = load(weapon["scene_path"])
 
 func take_damage(amount):
 	health -= amount
@@ -69,15 +76,15 @@ func edit_attrs(key, value) -> void:
 		attr_dict[key] = value
 	set(key, value)
 
-func shoot(velocity):
+func shoot(projectile_velocity: Vector2) -> void:
 	var projectile = PROJECTILES.instantiate()
 
 	projectile.global_position = shooting_point.global_position
-	projectile.velocity = velocity
+	projectile.velocity = projectile_velocity
 	projectile.hostile_bodies.append("enemy")
-	projectile.scale = Vector2.ONE * weapon["scale"]
+	projectile.scale = Vector2.ONE * weapon["scale"] * scale
 	projectile.is_hostile = false
-	projectile.disappear_time = weapon["disappear_time"]
+	projectile.disappear_time = weapon["disappear_time"]*scale.x
 	projectile.change_sprite_dir()
 	
 	get_tree().current_scene.add_child(projectile)
@@ -90,7 +97,7 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("go left", "go right")
 	
 	cooldown -= delta
-	if is_shooting and cooldown <= 0:
+	if is_shooting and cooldown <= 0 and shootable:
 		var shoot_dir := Vector2(current_dir, 0)
 
 		if position_lock:
@@ -109,26 +116,40 @@ func _physics_process(delta: float) -> void:
 				shoot_dir.x = current_dir
 
 			shoot_dir = shoot_dir.normalized()
-		#if position_lock:
-			#pos_factor = 0
-		#else:
-			#pos_factor = 1
-		# speed_factor*speed*abs(direction)*pos_factor + 
+		
 		shoot(shoot_dir * (shoot_factor * weapon["shooting_speed"]))
 		cooldown = weapon["shootout_cooldown"]
-		print(direction)
 	
 	if is_on_floor() and is_jumping:
 		is_jumping = false
 #		is_dashing = false
 		
+	if will_jump:
+		if is_on_floor() and will_jump_within > 0:
+			velocity.y = jump_velocity*jump_velocity_factor
+			is_rising = true
+			is_jumping = true
+			animated_sprite.play("jump")
+			audio_stream_player.stop()
+			audio_stream_player.stream = jumping_sound
+			audio_stream_player.play(0.025)
+		elif !is_on_floor() and will_jump_within > 0:
+			will_jump_within -= delta
+		elif will_jump_within <= 0:
+			will_jump = false
+			will_jump_within = 0
 	# Handle jump.
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and jumpable:
 		if is_on_floor():
 			velocity.y = jump_velocity*jump_velocity_factor
 			is_rising = true
 			is_jumping = true
 			animated_sprite.play("jump")
+			audio_stream_player.stream = jumping_sound
+			audio_stream_player.play(0.025)
+		else:
+			will_jump = true
+			will_jump_within = Global.JUMP_BUFFER_TIME
 		#else:
 			#is_dashing = true
 	
@@ -147,7 +168,7 @@ func _physics_process(delta: float) -> void:
 		collision_shape.shape.height = 46
 		hurtbox.shape.height = 46
 		
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and shootable:
 		is_shooting = not is_shooting
 	if Input.is_action_just_pressed("pos_lock"):
 		position_lock = not position_lock
@@ -156,7 +177,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if direction:
 		current_dir = direction
-	if direction and not is_crowching:
+	if direction and not is_crowching and movable:
 		if direction > 0:
 			animated_sprite.flip_h = false
 			shooting_point.position = Vector2(20, -2)
@@ -171,7 +192,8 @@ func _physics_process(delta: float) -> void:
 		if not position_lock:
 			velocity.x = direction * speed * speed_factor
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed * speed_factor)
+		if movable:
+			velocity.x = move_toward(velocity.x, 0, speed * speed_factor)
 	was_falling = is_falling
 	is_falling = velocity.y > 0 and not is_on_floor()
 	if is_falling:
@@ -180,11 +202,13 @@ func _physics_process(delta: float) -> void:
 
 	if is_falling:
 		animated_sprite.play("falling")
-	elif (not is_falling) and was_falling:
+	elif (not is_falling) and was_falling and (not is_jumping):
 		animated_sprite.play("fallen")
+		audio_stream_player.stream = grond_hit_sound
+		audio_stream_player.play(0.07)
 	
 	else:
-		if is_on_floor() and not is_rising:
+		if is_on_floor() and not is_rising and movable:
 			if direction:
 				if direction > 0:
 					animated_sprite.play("running")
@@ -192,12 +216,14 @@ func _physics_process(delta: float) -> void:
 				elif direction < 0:
 					animated_sprite.play("running")
 					animated_sprite.flip_h = true
+				audio_stream_player.stream = running_sound
+				audio_stream_player.play(0.07)
 			else:
 				animated_sprite.play("idle")
 	if is_crowching:
 		animated_sprite.play("crouch")
-	if is_shooting:
+	if is_shooting and shootable:
 		animated_sprite.play("shooting")
 
-
-	move_and_slide()
+	if movable:
+		move_and_slide()
